@@ -47,8 +47,8 @@ def main():
     )
     parser.add_argument(
         "--author",
-        default="Claude",
-        help="Author name for redlining validation (default: Claude)",
+        default="GitHub Copilot",
+        help="Author name for redlining validation (default: GitHub Copilot)",
     )
     args = parser.parse_args()
 
