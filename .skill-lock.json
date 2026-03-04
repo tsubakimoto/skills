@@ -1,0 +1,195 @@
+{
+  "version": 3,
+  "skills": {
+    "appinsights-instrumentation": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/appinsights-instrumentation/SKILL.md",
+      "skillFolderHash": "cbeb51faa472555f4263f32da44b8a04649911d6",
+      "installedAt": "2026-03-02T14:01:54.122Z",
+      "updatedAt": "2026-03-02T14:01:54.122Z"
+    },
+    "azure-ai": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-ai/SKILL.md",
+      "skillFolderHash": "238e79c3c9e0a17904faa138a8b95c0bbd9f67cd",
+      "installedAt": "2026-03-02T14:01:54.168Z",
+      "updatedAt": "2026-03-02T14:01:54.168Z"
+    },
+    "azure-aigateway": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-aigateway/SKILL.md",
+      "skillFolderHash": "ea8a654c1c452f7b4c021d284412d720f27f8539",
+      "installedAt": "2026-03-02T14:01:54.203Z",
+      "updatedAt": "2026-03-02T14:01:54.203Z"
+    },
+    "azure-cloud-migrate": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-cloud-migrate/SKILL.md",
+      "skillFolderHash": "fd34b5c6ae47789b8db46c70f49541eeec3a7a1a",
+      "installedAt": "2026-03-02T14:01:54.237Z",
+      "updatedAt": "2026-03-02T14:01:54.237Z"
+    },
+    "azure-compliance": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-compliance/SKILL.md",
+      "skillFolderHash": "0a0eca8ce26b42d284bc32d94ca48ce697a7e299",
+      "installedAt": "2026-03-02T14:01:54.271Z",
+      "updatedAt": "2026-03-02T14:01:54.271Z"
+    },
+    "azure-compute": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-compute/SKILL.md",
+      "skillFolderHash": "c38b5b3aba0299394a6d7d850a914feccb0f8d74",
+      "installedAt": "2026-03-02T14:01:54.303Z",
+      "updatedAt": "2026-03-02T14:01:54.303Z"
+    },
+    "azure-cost-optimization": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-cost-optimization/SKILL.md",
+      "skillFolderHash": "87d6936ed3931961fb037d74eac563f26c7c62ae",
+      "installedAt": "2026-03-02T14:01:54.341Z",
+      "updatedAt": "2026-03-02T14:01:54.341Z"
+    },
+    "azure-deploy": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-deploy/SKILL.md",
+      "skillFolderHash": "05d7fe1740fb0148f170e6cb40bbada4fac07976",
+      "installedAt": "2026-03-02T14:01:54.376Z",
+      "updatedAt": "2026-03-02T14:01:54.376Z"
+    },
+    "azure-diagnostics": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-diagnostics/SKILL.md",
+      "skillFolderHash": "5c68208a7984fa2c4aa8791bfc6055c72572655a",
+      "installedAt": "2026-03-02T14:01:54.408Z",
+      "updatedAt": "2026-03-02T14:01:54.408Z"
+    },
+    "azure-hosted-copilot-sdk": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-hosted-copilot-sdk/SKILL.md",
+      "skillFolderHash": "2f3e80817dfd374128253df19305042b6fab0415",
+      "installedAt": "2026-03-02T14:01:54.441Z",
+      "updatedAt": "2026-03-02T14:01:54.441Z"
+    },
+    "azure-kusto": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-kusto/SKILL.md",
+      "skillFolderHash": "26f68a8774c60cee9d2dcf9a5a22bd68515a0e24",
+      "installedAt": "2026-03-02T14:01:54.493Z",
+      "updatedAt": "2026-03-02T14:01:54.493Z"
+    },
+    "azure-messaging": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-messaging/SKILL.md",
+      "skillFolderHash": "8db6479ff2ba91f7e63f98d523e3b3ef5ab36b11",
+      "installedAt": "2026-03-02T14:01:54.535Z",
+      "updatedAt": "2026-03-02T14:01:54.535Z"
+    },
+    "azure-observability": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-observability/SKILL.md",
+      "skillFolderHash": "cfa5646f74b97c2a59ce6c8de657d40bb8adf19c",
+      "installedAt": "2026-03-02T14:01:54.570Z",
+      "updatedAt": "2026-03-02T14:01:54.570Z"
+    },
+    "azure-prepare": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-prepare/SKILL.md",
+      "skillFolderHash": "94e4e898d2cc7ff6884a38b89e041215a7cbb387",
+      "installedAt": "2026-03-02T14:01:54.603Z",
+      "updatedAt": "2026-03-02T14:01:54.603Z"
+    },
+    "azure-rbac": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-rbac/SKILL.md",
+      "skillFolderHash": "585f247b1dbbc30a73496f79e23fb45dcf628987",
+      "installedAt": "2026-03-02T14:01:54.636Z",
+      "updatedAt": "2026-03-02T14:01:54.636Z"
+    },
+    "azure-resource-lookup": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-resource-lookup/SKILL.md",
+      "skillFolderHash": "3d1b40b697be7fdccd9b4e5ff6455e519092a560",
+      "installedAt": "2026-03-02T14:01:54.667Z",
+      "updatedAt": "2026-03-02T14:01:54.667Z"
+    },
+    "azure-resource-visualizer": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-resource-visualizer/SKILL.md",
+      "skillFolderHash": "38672c7a619f4e8826a9a8787cb44bd0e5c127d6",
+      "installedAt": "2026-03-02T14:01:54.699Z",
+      "updatedAt": "2026-03-02T14:01:54.699Z"
+    },
+    "azure-storage": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-storage/SKILL.md",
+      "skillFolderHash": "3035e6afd08f1677f19f48289ec3913ffce66e60",
+      "installedAt": "2026-03-02T14:01:54.732Z",
+      "updatedAt": "2026-03-02T14:01:54.732Z"
+    },
+    "azure-validate": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/azure-validate/SKILL.md",
+      "skillFolderHash": "e7f08d3a14c51faaac641dde36573a7ed7e70a07",
+      "installedAt": "2026-03-02T14:01:54.765Z",
+      "updatedAt": "2026-03-02T14:01:54.765Z"
+    },
+    "entra-app-registration": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/entra-app-registration/SKILL.md",
+      "skillFolderHash": "1a768ec54fa8737e2829fc53ebeea92139d21370",
+      "installedAt": "2026-03-02T14:01:54.798Z",
+      "updatedAt": "2026-03-02T14:01:54.798Z"
+    },
+    "microsoft-foundry": {
+      "source": "microsoft/GitHub-Copilot-for-Azure",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/microsoft/GitHub-Copilot-for-Azure.git",
+      "skillPath": "plugin/skills/microsoft-foundry/SKILL.md",
+      "skillFolderHash": "52871488eaed7b5a7d4959d106c2ab06c2b2d612",
+      "installedAt": "2026-03-02T14:01:54.836Z",
+      "updatedAt": "2026-03-02T14:01:54.836Z"
+    }
+  },
+  "dismissed": {}
+}
