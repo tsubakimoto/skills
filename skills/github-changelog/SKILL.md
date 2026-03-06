@@ -14,11 +14,15 @@ description: >
 
 指定された日付の GitHub Changelog 投稿をすべて取得し、各エントリを **要約・アクションプラン・リファレンス** に整理します。
 
+## Skill directory
+
+`~/.copilot/skills/github-changelog/`
+
 ## Quick Reference
 
 | タスク | コマンド |
 |--------|---------|
-| 指定日の投稿を取得 | `python ~/.copilot/skills/github-changelog/scripts/fetch_changelog.py <YYYY-MM-DD>` |
+| 指定日の投稿を取得 | `python scripts/fetch_changelog.py <YYYY-MM-DD>` |
 
 ---
 
@@ -38,7 +42,7 @@ description: >
 ## Running the Script
 
 ```bash
-python ~/.copilot/skills/github-changelog/scripts/fetch_changelog.py <YYYY-MM-DD>
+python scripts/fetch_changelog.py <YYYY-MM-DD>
 ```
 
 スクリプトは `https://github.blog/changelog/feed/` から RSS フィードを取得し、
@@ -46,7 +50,7 @@ python ~/.copilot/skills/github-changelog/scripts/fetch_changelog.py <YYYY-MM-DD
 
 **例:**
 ```bash
-python ~/.copilot/skills/github-changelog/scripts/fetch_changelog.py 2026-03-06
+python scripts/fetch_changelog.py 2026-03-06
 ```
 
 スクリプト出力例（JSON）:

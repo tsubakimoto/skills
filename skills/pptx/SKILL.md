@@ -6,6 +6,10 @@ license: Proprietary. LICENSE.txt has complete terms
 
 # PPTX Skill
 
+## Skill directory
+
+`~/.copilot/skills/pptx/`
+
 ## Quick Reference
 
 | Task | Guide |
