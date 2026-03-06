@@ -18,7 +18,7 @@ description: >
 
 | タスク | コマンド |
 |--------|---------|
-| 指定日の投稿を取得 | `python skills/github-changelog/scripts/fetch_changelog.py <YYYY-MM-DD>` |
+| 指定日の投稿を取得 | `python ~/.copilot/skills/github-changelog/scripts/fetch_changelog.py <YYYY-MM-DD>` |
 
 ---
 
@@ -38,7 +38,7 @@ description: >
 ## Running the Script
 
 ```bash
-python skills/github-changelog/scripts/fetch_changelog.py <YYYY-MM-DD>
+python ~/.copilot/skills/github-changelog/scripts/fetch_changelog.py <YYYY-MM-DD>
 ```
 
 スクリプトは `https://github.blog/changelog/feed/` から RSS フィードを取得し、
@@ -46,7 +46,7 @@ python skills/github-changelog/scripts/fetch_changelog.py <YYYY-MM-DD>
 
 **例:**
 ```bash
-python skills/github-changelog/scripts/fetch_changelog.py 2026-03-06
+python ~/.copilot/skills/github-changelog/scripts/fetch_changelog.py 2026-03-06
 ```
 
 スクリプト出力例（JSON）:
@@ -65,7 +65,7 @@ python skills/github-changelog/scripts/fetch_changelog.py 2026-03-06
 
 ## Output Format
 
-結果は必ず次のテンプレートで出力する: `./assets/template.md`
+結果は必ず次のテンプレートで出力する: `~/.copilot/skills/github-changelog/assets/template.md`
 
 エントリが 0 件の場合は「<date> のエントリは見つかりませんでした」と伝え、前後の日付で再確認することを提案する。
 
