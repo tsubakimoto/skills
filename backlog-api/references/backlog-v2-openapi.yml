@@ -1,0 +1,3072 @@
+# https://github.com/sugimomoto/backlogPostmanCollection
+openapi: 3.0.0
+info:
+  title: Backlog API
+  version: 1.0.0
+  description: "## About Backlog\r\n\r\nBacklog is a popular cloud-based project management SaaS in Japan."
+servers:
+  - url: https://{your-space}.backlog.com
+paths:
+  /api/v2/space:
+    get:
+      summary: スペース情報の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nスペースの情報を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-space/"
+  /api/v2/space/activities:
+    get:
+      summary: 最近の更新の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: activityTypeId[](複数指定可)
+          in: query
+          description: 'type(1-26) : activityTypeId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: minId
+          in: query
+          description: '最小ID : minId'
+          schema:
+            type: string
+          example: <数値>
+        - name: maxId
+          in: query
+          description: '最大ID : maxId'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100) 指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+      responses: {}
+      description: "# Description\r\n\r\nスペース上で行われた最近の更新の一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-recent-updates/"
+  /api/v2/space/image:
+    get:
+      summary: スペースアイコン画像の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nスペースのアイコン画像を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-space-logo/"
+  /api/v2/space/notification:
+    get:
+      summary: スペースのお知らせの取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nスペースのお知らせの情報を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-space-notification/"
+    put:
+      summary: スペースのお知らせの更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nスペースのお知らせの情報を更新します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-space-notification/"
+  /api/v2/space/diskUsage:
+    get:
+      summary: スペースの容量使用状況の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nスペースの容量使用状況の情報を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-space-disk-usage/"
+  /api/v2/space/attachment:
+    post:
+      summary: 添付ファイルの送信
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題、コメントまたはWikiに添付するファイルを送信し、添付ファイルに発行されたIDを取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/post-attachment-file/"
+  /api/v2/users:
+    get:
+      summary: ユーザー一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nスペースのユーザーの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-user-list/"
+    post:
+      summary: ユーザーの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nスペースに新しいユーザーを追加します。\nプロジェクト管理者は管理者権限のユーザを追加することは出来ません。\n新プランのスペースではこのAPIを利用できません。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-user/"
+  /api/v2/users/{userId}:
+    get:
+      summary: ユーザー情報の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nユーザー情報を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-user/"
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      summary: ユーザーの更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nユーザーの情報を更新します。\n新プランのスペースではこのAPIを利用できません。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-user/"
+    delete:
+      summary: ユーザーの削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nユーザーをスペースから削除します。\n新プランのスペースではこのAPIを利用できません。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-user/"
+  /api/v2/users/myself:
+    get:
+      summary: 認証ユーザー情報の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nAPIとの認証に使用しているユーザーの情報を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-own-user/"
+  /api/v2/users/{userId}/icon:
+    get:
+      summary: ユーザーアイコンの取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nユーザーのアイコン画像を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-user-icon/"
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/users/{userId}/activities:
+    get:
+      summary: ユーザーの最近の活動の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: activityTypeId[](複数指定可)
+          in: query
+          description: 'type(1-17) : activityTypeId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: minId
+          in: query
+          description: '最小ID : minId'
+          schema:
+            type: string
+          example: <数値>
+        - name: maxId
+          in: query
+          description: '最大ID : maxId'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100) 指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+      responses: {}
+      description: "# Description\r\n\r\nユーザーの最近の活動の一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-user-recent-updates/"
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/users/{userId}/stars:
+    get:
+      summary: ユーザーの受け取ったスター一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: minId
+          in: query
+          description: '最小ID : minId'
+          schema:
+            type: string
+          example: <数値>
+        - name: maxId
+          in: query
+          description: '最大ID : maxId'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100) 指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+      responses: {}
+      description: "# Description\r\n\r\nユーザーの受け取ったスターの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-received-star-list/"
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/users/{userId}/stars/count:
+    get:
+      summary: ユーザーの受け取ったスターの数の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: since
+          in: query
+          description: '指定した日付以降のスターをカウント (yyyy-MM-dd) : since'
+          schema:
+            type: string
+          example: <文字列>
+        - name: until
+          in: query
+          description: '指定した日付以前のスターをカウント (yyyy-MM-dd) : until'
+          schema:
+            type: string
+          example: <文字列>
+      responses: {}
+      description: "# Description\r\n\r\nユーザーの受け取ったスターの数を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/count-user-received-stars/"
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/users/myself/recentlyViewedIssues:
+    get:
+      summary: 自分が最近見た課題一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+        - name: offset
+          in: query
+          description: ' : offset'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100)  指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+      responses: {}
+      description: "# Description\r\n\r\nAPIとの認証に使用しているユーザーが最近見た課題の一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-list-of-recently-viewed-issues/"
+  /api/v2/users/myself/recentlyViewedProjects:
+    get:
+      summary: 自分が最近見たプロジェクト一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+        - name: offset
+          in: query
+          description: ' : offset'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100)  指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+      responses: {}
+      description: "# Description\r\n\r\nAPIとの認証に使用しているユーザーが最近見たプロジェクトの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-list-of-recently-viewed-projects/"
+  /api/v2/users/myself/recentlyViewedWikis:
+    get:
+      summary: 自分が最近見たWiki一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+        - name: offset
+          in: query
+          description: ' : offset'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100)  指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+      responses: {}
+      description: "# Description\r\n\r\nAPIとの認証に使用しているユーザーが最近見たWikiの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-list-of-recently-viewed-wikis/"
+  /api/v2/groups:
+    get:
+      summary: グループ一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+        - name: offset
+          in: query
+          description: ' : offset'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100)  指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+      responses: {}
+      description: "# Description\r\n\r\n\n       warning\n           このAPIは非推奨です\n          チーム一覧の取得 をご利用ください。\n\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-list-of-groups/"
+    post:
+      summary: グループの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n\n       warning\n           このAPIは非推奨です\n          チームの追加 をご利用ください。\n\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-group/"
+  /api/v2/groups/{groupId}:
+    get:
+      summary: グループ情報の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n\n       warning\n           このAPIは非推奨です\n          チーム情報の取得 をご利用ください。\n\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-group/"
+    parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      summary: グループの削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n\n       warning\n           このAPIは非推奨です\n          チームの削除  をご利用ください。\n\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-group/"
+  '/api/v2/groups/{groupId}   ':
+    patch:
+      summary: グループ情報の更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n\n       warning\n           このAPIは非推奨です\n          チーム情報の更新 をご利用ください。\n\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-group/"
+    parameters:
+      - name: 'groupId   '
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/statuses:
+    get:
+      summary: 状態一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n\n       warning\n           このAPIは非推奨です\n          プロジェクトの状態一覧の取得 をご利用ください。\n\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-status-list/"
+  "/api/v2/projects/{projectIdOrKey}/statuses\n":
+    get:
+      summary: プロジェクトの状態一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクト固有の課題に設定できる状態一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-status-list-of-project/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      summary: 状態の追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトに状態を追加します。\n1プロジェクトにつき8個まで状態を追加できます。 標準の4つの状態と合わせると、合計12個の状態を設定できます。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-status/"
+  /api/v2/priorities:
+    get:
+      summary: 優先度一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題に設定できる優先度の一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-priority-list/"
+  /api/v2/resolutions:
+    get:
+      summary: 完了理由一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題に設定できる完了理由の一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-resolution-list/"
+  /api/v2/projects:
+    get:
+      summary: プロジェクト一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: archived
+          in: query
+          description: >-
+            省略された場合は全てのプロジェクト、falseの場合はアーカイブされていないプロジェクト、trueの場合はアーカイブされたプロジェクトを返します。
+            : archived
+          schema:
+            type: string
+          example: <真偽値>
+        - name: all
+          in: query
+          description: >-
+            ユーザが管理者権限の場合のみ有効なパラメータです。trueの場合はすべてのプロジェクト、falseの場合は参加しているプロジェクトのみを返します。初期値はfalse。
+            : all
+          schema:
+            type: string
+          example: <真偽値>
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-project-list/"
+    post:
+      summary: プロジェクトの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n新しいプロジェクトを追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-project/"
+  /api/v2/projects/{projectIdOrKey}:
+    get:
+      summary: プロジェクト情報の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトの情報を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-project/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      summary: プロジェクト情報の更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトの情報を更新します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-project/"
+    delete:
+      summary: プロジェクトの削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトを削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-project/"
+  /api/v2/projects/{projectIdOrKey}/image:
+    get:
+      summary: プロジェクトアイコンの取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトのアイコン画像を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-project-icon/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/activities:
+    get:
+      summary: プロジェクトの最近の活動の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: activityTypeId[](複数指定可)
+          in: query
+          description: 'type(1-26) : activityTypeId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: minId
+          in: query
+          description: '最小ID : minId'
+          schema:
+            type: string
+          example: <数値>
+        - name: maxId
+          in: query
+          description: '最大ID : maxId'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100) 指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクト上の最近の活動の一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-project-recent-updates/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/users:
+    post:
+      summary: プロジェクトユーザーの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトにユーザーを追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-project-user/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: プロジェクトユーザー一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: excludeGroupMembers
+          in: query
+          description: 'グループを介してプロジェクトに参加しているメンバーを除く : excludeGroupMembers'
+          schema:
+            type: string
+          example: <真偽値>
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトのユーザーの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-project-user-list/"
+    delete:
+      summary: プロジェクトユーザーの削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトからユーザーを削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-project-user/"
+  /api/v2/projects/{projectIdOrKey}/administrators:
+    post:
+      summary: プロジェクト管理者の追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトユーザーにプロジェクト管理者権限を追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-project-administrator/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: プロジェクト管理者一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクト管理者に設定されているユーザーの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-list-of-project-administrators/"
+    delete:
+      summary: プロジェクト管理者の削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトユーザーからプロジェクト管理者権限を削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-project-administrator/"
+  /api/v2/projects/{projectIdOrKey}/statuses/{id}:
+    patch:
+      summary: 状態情報の更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n追加した状態の情報を更新します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-status/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      summary: 状態の削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトから状態を削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-status/"
+  "/api/v2/projects/{projectIdOrKey}/statuses/updateDisplayOrder\n":
+    patch:
+      summary: 状態の並び替え
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n状態の表示順を変更します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-order-of-status/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/issueTypes:
+    get:
+      summary: 種別一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトに登録されている種別の一覧を返します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-issue-type-list/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      summary: 種別の追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトに種別を追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-issue-type/"
+  /api/v2/projects/{projectIdOrKey}/issueTypes/{id}:
+    patch:
+      summary: 種別情報の更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n種別の情報を更新します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-issue-type/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      summary: 種別の削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトから種別を削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-issue-type/"
+  /api/v2/projects/{projectIdOrKey}/categories:
+    get:
+      summary: カテゴリー一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトに登録されているカテゴリーの一覧を返します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-category-list/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      summary: カテゴリーの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトにカテゴリーを追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-category/"
+  /api/v2/projects/{projectIdOrKey}/categories/{id}:
+    patch:
+      summary: カテゴリー情報の更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nカテゴリーの情報を更新します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-category/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      summary: カテゴリーの削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nカテゴリーを削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-category/"
+  /api/v2/projects/{projectIdOrKey}/versions:
+    get:
+      summary: バージョン(マイルストーン)一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトに登録されているバージョン(マイルストーン)の一覧を返します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-version-milestone-list/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      summary: バージョン(マイルストーン)の追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトにバージョン(マイルストーン)を追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-version-milestone/"
+  /api/v2/projects/{projectIdOrKey}/versions/{id}:
+    patch:
+      summary: バージョン(マイルストーン)情報の更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nバージョン(マイルストーン)の情報を更新します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-version-milestone/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      summary: バージョン(マイルストーン)の削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nバージョン(マイルストーン)を削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-version/"
+  /api/v2/projects/{projectIdOrKey}/customFields:
+    get:
+      summary: カスタム属性一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトに登録されているカスタム属性の一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-custom-field-list/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      summary: カスタム属性の追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトに新しいカスタム属性を追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-custom-field/"
+  /api/v2/projects/{projectIdOrKey}/customFields/{id}:
+    patch:
+      summary: カスタム属性の更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nカスタム属性を更新します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-custom-field/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      summary: カスタム属性の削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nカスタム属性を削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-custom-field/"
+  /api/v2/projects/{projectIdOrKey}/customFields/{id}/items:
+    post:
+      summary: 選択リストカスタム属性のリスト項目の追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n選択リスト形式のカスタム属性のリスト項目を追加します。\n「課題の追加/編集時に選択肢を追加できる」の設定が無効な場合は管理者権限のユーザーのみ呼び出せます。\n指定されたカスタム属性が選択リスト形式でない場合はエラーになります。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-list-item-for-list-type-custom-field/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/customFields/{id}/items/{itemId}:
+    patch:
+      summary: 選択リストカスタム属性のリスト項目の更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n選択リスト形式のカスタム属性のリスト項目を更新します。\n指定されたカスタム属性が選択リスト形式でない場合はエラーになります。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-list-item-for-list-type-custom-field/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      summary: 選択リストカスタム属性のリスト項目の削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n選択リスト形式のカスタム属性のリスト項目を削除します。\n指定されたカスタム属性が選択リスト形式でない場合はエラーになります。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-list-item-for-list-type-custom-field/"
+  /api/v2/projects/{projectIdOrKey}/files/metadata/{path}:
+    get:
+      summary: 共有ファイル一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+        - name: offset
+          in: query
+          description: ' : offset'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-1000)  指定が無い場合は1000 : count'
+          schema:
+            type: string
+          example: <数値>
+      responses: {}
+      description: "# Description\r\n\r\n共有ファイルの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-list-of-shared-files/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/files/{sharedFileId}:
+    get:
+      summary: 共有ファイルのダウンロード
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n共有ファイルを取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-file/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: sharedFileId
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/diskUsage:
+    get:
+      summary: プロジェクトの容量使用状況の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトの容量使用状況の情報を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-project-disk-usage/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/webhooks:
+    get:
+      summary: Webhook一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWebhookの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-list-of-webhooks/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      summary: Webhookの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWebhookを追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-webhook/"
+  /api/v2/projects/{projectIdOrKey}/webhooks/{webhookId}:
+    get:
+      summary: Webhookの取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWebhookの情報を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-webhook/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: webhookId
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      summary: Webhookの更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWebhookの情報を更新します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-webhook/"
+    delete:
+      summary: Webhookの削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWebhookを削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-webhook/"
+  /api/v2/issues:
+    get:
+      summary: 課題一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: projectId[](複数指定可)
+          in: query
+          description: 'プロジェクトのID : projectId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: issueTypeId[](複数指定可)
+          in: query
+          description: '種別のID : issueTypeId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: categoryId[](複数指定可)
+          in: query
+          description: 'カテゴリーのID : categoryId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: versionId[](複数指定可)
+          in: query
+          description: '発生バージョンのID : versionId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: milestoneId[](複数指定可)
+          in: query
+          description: 'マイルストーンのID : milestoneId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: statusId[](複数指定可)
+          in: query
+          description: '状態のIDプロジェクト毎の状態一覧のAPI : statusId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: priorityId[](複数指定可)
+          in: query
+          description: '優先度のID : priorityId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: assigneeId[](複数指定可)
+          in: query
+          description: '担当者のID : assigneeId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: createdUserId[](複数指定可)
+          in: query
+          description: '登録者のID : createdUserId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: resolutionId[](複数指定可)
+          in: query
+          description: '完了理由のID : resolutionId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: parentChild
+          in: query
+          description: '親子課題の条件0: すべて1: 子課題以外2: 子課題3: 親課題でも子課題でもない課題4: 親課題 : parentChild'
+          schema:
+            type: string
+          example: <数値>
+        - name: attachment
+          in: query
+          description: '添付ファイルを含む場合はtrue : attachment'
+          schema:
+            type: string
+          example: <真偽値>
+        - name: sharedFile
+          in: query
+          description: '共有ファイルを含む場合はtrue : sharedFile'
+          schema:
+            type: string
+          example: <真偽値>
+        - name: sort
+          in: query
+          description: >-
+            課題一覧のソートに使用する属性名“issueType”“category”“version”“milestone”“summary”“status”“priority”“attachment”“sharedFile”“created”“createdUser”“updated”“updatedUser”“assignee”“startDate”“dueDate”“estimatedHours”“actualHours”“childIssue”“customField_${id}”
+            : sort
+          schema:
+            type: string
+          example: <文字列>
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+        - name: offset
+          in: query
+          description: ' : offset'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100)  指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+        - name: createdSince
+          in: query
+          description: '登録日 (yyyy-MM-dd) : createdSince'
+          schema:
+            type: string
+          example: <文字列>
+        - name: createdUntil
+          in: query
+          description: '登録日 (yyyy-MM-dd) : createdUntil'
+          schema:
+            type: string
+          example: <文字列>
+        - name: updatedSince
+          in: query
+          description: '更新日 (yyyy-MM-dd) : updatedSince'
+          schema:
+            type: string
+          example: <文字列>
+        - name: updatedUntil
+          in: query
+          description: '更新日 (yyyy-MM-dd) : updatedUntil'
+          schema:
+            type: string
+          example: <文字列>
+        - name: startDateSince
+          in: query
+          description: '開始日 (yyyy-MM-dd) : startDateSince'
+          schema:
+            type: string
+          example: <文字列>
+        - name: startDateUntil
+          in: query
+          description: '開始日 (yyyy-MM-dd) : startDateUntil'
+          schema:
+            type: string
+          example: <文字列>
+        - name: dueDateSince
+          in: query
+          description: '期限日 (yyyy-MM-dd) : dueDateSince'
+          schema:
+            type: string
+          example: <文字列>
+        - name: dueDateUntil
+          in: query
+          description: '期限日 (yyyy-MM-dd) : dueDateUntil'
+          schema:
+            type: string
+          example: <文字列>
+        - name: id[](複数指定可)
+          in: query
+          description: '課題のID : id[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: parentIssueId[](複数指定可)
+          in: query
+          description: '親課題のID : parentIssueId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: keyword
+          in: query
+          description: '検索キーワード : keyword'
+          schema:
+            type: string
+          example: <文字列>
+      responses: {}
+      description: "# Description\r\n\r\n課題の一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-issue-list/"
+    post:
+      summary: 課題の追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n新しい課題を追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-issue/"
+  /api/v2/issues/count:
+    get:
+      summary: 課題数の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: projectId[](複数指定可)
+          in: query
+          description: 'プロジェクトのID : projectId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: issueTypeId[](複数指定可)
+          in: query
+          description: '種別のID : issueTypeId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: categoryId[](複数指定可)
+          in: query
+          description: 'カテゴリーのID : categoryId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: versionId[](複数指定可)
+          in: query
+          description: '発生バージョンのID : versionId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: milestoneId[](複数指定可)
+          in: query
+          description: 'マイルストーンのID : milestoneId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: statusId[](複数指定可)
+          in: query
+          description: '状態のID : statusId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: priorityId[](複数指定可)
+          in: query
+          description: '優先度のID : priorityId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: assigneeId[](複数指定可)
+          in: query
+          description: '担当者のID : assigneeId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: createdUserId[](複数指定可)
+          in: query
+          description: '登録者のID : createdUserId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: resolutionId[](複数指定可)
+          in: query
+          description: '完了理由のID : resolutionId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: parentChild
+          in: query
+          description: '親子課題の条件0: すべて1: 子課題以外2: 子課題3: 親課題でも子課題でもない課題4: 親課題 : parentChild'
+          schema:
+            type: string
+          example: <数値>
+        - name: attachment
+          in: query
+          description: '添付ファイルを含む場合はtrue : attachment'
+          schema:
+            type: string
+          example: <真偽値>
+        - name: sharedFile
+          in: query
+          description: '共有ファイルを含む場合はtrue : sharedFile'
+          schema:
+            type: string
+          example: <真偽値>
+        - name: sort
+          in: query
+          description: >-
+            課題一覧のソートに使用する属性名“issueType”“category”“version”“milestone”“summary”“status”“priority”“attachment”“sharedFile”“created”“createdUser”“updated”“updatedUser”“assignee”“startDate”“dueDate”“estimatedHours”“actualHours”“childIssue”“customField_${id}”
+            : sort
+          schema:
+            type: string
+          example: <文字列>
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+        - name: offset
+          in: query
+          description: ' : offset'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100)  指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+        - name: createdSince
+          in: query
+          description: '登録日 (yyyy-MM-dd) : createdSince'
+          schema:
+            type: string
+          example: <文字列>
+        - name: createdUntil
+          in: query
+          description: '登録日 (yyyy-MM-dd) : createdUntil'
+          schema:
+            type: string
+          example: <文字列>
+        - name: updatedSince
+          in: query
+          description: '更新日 (yyyy-MM-dd) : updatedSince'
+          schema:
+            type: string
+          example: <文字列>
+        - name: updatedUntil
+          in: query
+          description: '更新日 (yyyy-MM-dd) : updatedUntil'
+          schema:
+            type: string
+          example: <文字列>
+        - name: startDateSince
+          in: query
+          description: '開始日 (yyyy-MM-dd) : startDateSince'
+          schema:
+            type: string
+          example: <文字列>
+        - name: startDateUntil
+          in: query
+          description: '開始日 (yyyy-MM-dd) : startDateUntil'
+          schema:
+            type: string
+          example: <文字列>
+        - name: dueDateSince
+          in: query
+          description: '期限日 (yyyy-MM-dd) : dueDateSince'
+          schema:
+            type: string
+          example: <文字列>
+        - name: dueDateUntil
+          in: query
+          description: '期限日 (yyyy-MM-dd) : dueDateUntil'
+          schema:
+            type: string
+          example: <文字列>
+        - name: id[](複数指定可)
+          in: query
+          description: '課題のID : id[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: parentIssueId[](複数指定可)
+          in: query
+          description: '親課題のID : parentIssueId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: keyword
+          in: query
+          description: '検索キーワード : keyword'
+          schema:
+            type: string
+          example: <文字列>
+      responses: {}
+      description: "# Description\r\n\r\n課題の数を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/count-issue/"
+  /api/v2/issues/{issueIdOrKey}:
+    get:
+      summary: 課題情報の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題の情報を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-issue/"
+    parameters:
+      - name: issueIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      summary: 課題情報の更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題の情報を更新します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-issue/"
+    delete:
+      summary: 課題の削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題を削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-issue/"
+  /api/v2/issues/{issueIdOrKey}/comments:
+    get:
+      summary: 課題コメントの取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: minId
+          in: query
+          description: '最小ID : minId'
+          schema:
+            type: string
+          example: <数値>
+        - name: maxId
+          in: query
+          description: '最大ID : maxId'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100) 指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+      responses: {}
+      description: "# Description\r\n\r\n課題に登録されているコメントの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-comment-list/"
+    parameters:
+      - name: issueIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      summary: 課題コメントの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題に新しいコメントを追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-comment/"
+  /api/v2/issues/{issueIdOrKey}/comments/count:
+    get:
+      summary: 課題コメント数の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題に登録されているコメントの数を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/count-comment/"
+    parameters:
+      - name: issueIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/issues/{issueIdOrKey}/comments/{commentId}:
+    get:
+      summary: 課題コメント情報の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題コメントの詳細を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-comment/"
+    parameters:
+      - name: issueIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: commentId
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      summary: 課題コメント情報の更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題コメントの情報を更新します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-comment/"
+  "/api/v2/issues/{issueIdOrKey}/comments/{commentId}\n":
+    "delete\n":
+      summary: 課題コメントの削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題コメントを削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-comment/"
+    parameters:
+      - name: issueIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: |
+          commentId
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/issues/{issueIdOrKey}/comments/{commentId}/notifications:
+    get:
+      summary: 課題コメントのお知らせ一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題コメントのお知らせ一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-list-of-comment-notifications/"
+    parameters:
+      - name: issueIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: commentId
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      summary: 課題コメントにお知らせを追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nコメントにお知らせを追加します\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-comment-notification/"
+  /api/v2/issues/{issueIdOrKey}/attachments:
+    get:
+      summary: 課題添付ファイル一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題の添付ファイルの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-list-of-issue-attachments/"
+    parameters:
+      - name: issueIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/issues/{issueIdOrKey}/attachments/{attachmentId}:
+    get:
+      summary: 課題添付ファイルのダウンロード
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題の添付ファイルをダウンロードします。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-issue-attachment/"
+    parameters:
+      - name: issueIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: attachmentId
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      summary: 課題添付ファイルの削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題の添付ファイルを削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-issue-attachment/"
+  /api/v2/issues/{issueIdOrKey}/participants:
+    get:
+      summary: 課題の参加者一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題の参加者一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-issue-participant-list/"
+    parameters:
+      - name: issueIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/issues/{issueIdOrKey}/sharedFiles:
+    get:
+      summary: 課題共有ファイル一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題にリンクされた共有ファイルの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-list-of-linked-shared-files/"
+    parameters:
+      - name: issueIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      summary: 課題に共有ファイルをリンク
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題に共有ファイルをリンクします。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/link-shared-files-to-issue/"
+  /api/v2/issues/{issueIdOrKey}/sharedFiles/{id}:
+    delete:
+      summary: 課題の共有ファイルのリンクを解除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題にリンクされた共有ファイルのリンクを解除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/remove-link-to-shared-file-from-issue/"
+    parameters:
+      - name: issueIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/wikis:
+    get:
+      summary: Wikiページ一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: projectIdOrKey
+          in: query
+          description: 'プロジェクトのID または プロジェクトキー : projectIdOrKey'
+          schema:
+            type: string
+          example: <文字列>
+        - name: keyword
+          in: query
+          description: '検索キーワード : keyword'
+          schema:
+            type: string
+          example: <文字列>
+      responses: {}
+      description: "# Description\r\n\r\nWikiページの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-wiki-page-list/"
+    post:
+      summary: Wikiページの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWIkiの新しいページを追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-wiki-page/"
+  /api/v2/wikis/count:
+    get:
+      summary: Wikiページ数の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: projectIdOrKey
+          in: query
+          description: 'プロジェクトのID または プロジェクトキー : projectIdOrKey'
+          schema:
+            type: string
+          example: <文字列>
+      responses: {}
+      description: "# Description\r\n\r\nWikiページの数を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/count-wiki-page/"
+  /api/v2/wikis/tags:
+    get:
+      summary: Wikiページタグ一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: projectIdOrKey
+          in: query
+          description: 'プロジェクトのID または プロジェクトキー : projectIdOrKey'
+          schema:
+            type: string
+          example: <文字列>
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクト内のWikiページで使用されているタグの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-wiki-page-tag-list/"
+  /api/v2/wikis/{wikiId}:
+    get:
+      summary: Wikiページ情報の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWikiページの情報を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-wiki-page/"
+    parameters:
+      - name: wikiId
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      summary: Wikiページ情報の更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWikiページの情報を更新します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-wiki-page/"
+    delete:
+      summary: Wikiページの削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWIkiページを削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-wiki-page/"
+  /api/v2/wikis/{wikiId}/attachments:
+    get:
+      summary: Wiki添付ファイル一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWikiの添付ファイルの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-list-of-wiki-attachments/"
+    parameters:
+      - name: wikiId
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      summary: Wiki添付ファイルの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWikiに添付ファイルを追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/attach-file-to-wiki/"
+  /api/v2/wikis/{wikiId}/attachments/{attachmentId}:
+    get:
+      summary: Wiki添付ファイルのダウンロード
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWikiの添付ファイルをダウンロードします。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-wiki-page-attachment/"
+    parameters:
+      - name: wikiId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: attachmentId
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      summary: Wiki添付ファイルの削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWikiの添付ファイルを削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/remove-wiki-attachment/"
+  /api/v2/wikis/{wikiId}/sharedFiles:
+    get:
+      summary: Wiki共有ファイル一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWikiの共有ファイルの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-list-of-shared-files-on-wiki/"
+    parameters:
+      - name: wikiId
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      summary: Wikiに共有ファイルをリンク
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWikiに共有ファイルをリンクします。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/link-shared-files-to-wiki/"
+  /api/v2/wikis/{wikiId}/sharedFiles/{id}:
+    delete:
+      summary: Wikiの共有ファイルのリンクを解除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWikiにリンクされた共有ファイルのリンクを解除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/remove-link-to-shared-file-from-wiki/"
+    parameters:
+      - name: wikiId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/wikis/{wikiId}/history:
+    get:
+      summary: Wikiページ更新履歴一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: minId
+          in: query
+          description: '最小ID : minId'
+          schema:
+            type: string
+          example: <数値>
+        - name: maxId
+          in: query
+          description: '最大ID : maxId'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100) 指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+      responses: {}
+      description: "# Description\r\n\r\nWikiページの更新履歴の一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-wiki-page-history/"
+    parameters:
+      - name: wikiId
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/wikis/{wikiId}/stars:
+    get:
+      summary: Wikiページのスター一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nWikiページが受け取ったスターの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-wiki-page-star/"
+    parameters:
+      - name: wikiId
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/stars:
+    post:
+      summary: スターの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n課題、コメント、Wikiページにスターを一つ追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-star/"
+  /api/v2/notifications:
+    get:
+      summary: お知らせ一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: minId
+          in: query
+          description: '最小ID : minId'
+          schema:
+            type: string
+          example: <数値>
+        - name: maxId
+          in: query
+          description: '最大ID : maxId'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100) 指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+        - name: senderId
+          in: query
+          description: '送信者ID : senderId'
+          schema:
+            type: string
+          example: <数値>
+      responses: {}
+      description: "# Description\r\n\r\n自分の受け取ったお知らせの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-notification/"
+  /api/v2/notifications/count:
+    get:
+      summary: お知らせ数の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: alreadyRead
+          in: query
+          description: ' : alreadyRead'
+          schema:
+            type: string
+          example: <真偽値>
+        - name: resourceAlreadyRead
+          in: query
+          description: ' : resourceAlreadyRead'
+          schema:
+            type: string
+          example: <真偽値>
+      responses: {}
+      description: "# Description\r\n\r\n自分の受け取ったお知らせの数を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/count-notification/"
+  /api/v2/notifications/markAsRead:
+    post:
+      summary: お知らせ数のリセット
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n自分の受け取ったお知らせの未読数をリセットします。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/reset-unread-notification-count/"
+  /api/v2/notifications/{id}/markAsRead:
+    post:
+      summary: お知らせの既読化
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nお知らせを既読にします。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/read-notification/"
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/git/repositories:
+    get:
+      summary: Gitリポジトリ一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nGitリポジトリの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-list-of-git-repositories/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/git/repositories/{repoIdOrName}:
+    get:
+      summary: Gitリポジトリの取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nGitリポジトリを取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-git-repository/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repoIdOrName
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/git/repositories/{repoIdOrName}/pullRequests:
+    get:
+      summary: プルリクエスト一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: statusId[](複数指定可)
+          in: query
+          description: '状態のID : statusId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: assigneeId[](複数指定可)
+          in: query
+          description: '担当者のID : assigneeId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: issueId[](複数指定可)
+          in: query
+          description: '関連課題のID : issueId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: createdUserId[](複数指定可)
+          in: query
+          description: '登録者のID : createdUserId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: offset
+          in: query
+          description: ' : offset'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100)  指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+      responses: {}
+      description: "# Description\r\n\r\nプルリクエストの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-pull-request-list/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repoIdOrName
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      summary: プルリクエストの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプルリクエストを追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-pull-request/"
+  /api/v2/projects/{projectIdOrKey}/git/repositories/{repoIdOrName}/pullRequests/count:
+    get:
+      summary: プルリクエスト数の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: statusId[](複数指定可)
+          in: query
+          description: '状態のID : statusId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: assigneeId[](複数指定可)
+          in: query
+          description: '担当者のID : assigneeId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: issueId[](複数指定可)
+          in: query
+          description: '関連課題のID : issueId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: createdUserId[](複数指定可)
+          in: query
+          description: '登録者のID : createdUserId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+        - name: offset
+          in: query
+          description: ' : offset'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100)  指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+      responses: {}
+      description: "# Description\r\n\r\nプルリクエストの数を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-number-of-pull-requests/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repoIdOrName
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/git/repositories/{repoIdOrName}/pullRequests/{number}:
+    get:
+      summary: プルリクエストの取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプルリクエストを取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-pull-request/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repoIdOrName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: number
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      summary: プルリクエストの更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプルリクエストを更新します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-pull-request/"
+  /api/v2/projects/{projectIdOrKey}/git/repositories/{repoIdOrName}/pullRequests/{number}/comments:
+    get:
+      summary: プルリクエストコメントの取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: minId
+          in: query
+          description: '最小ID : minId'
+          schema:
+            type: string
+          example: <数値>
+        - name: maxId
+          in: query
+          description: '最大ID : maxId'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100) 指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+      responses: {}
+      description: "# Description\r\n\r\nプルリクエストのコメントの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-pull-request-comment/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repoIdOrName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: number
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      summary: プルリクエストコメントの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプルリクエストにコメントを追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-pull-request-comment/"
+  /api/v2/projects/{projectIdOrKey}/git/repositories/{repoIdOrName}/pullRequests/{number}/comments/count:
+    get:
+      summary: プルリクエストコメント数の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプルリクエストに登録されているコメントの数を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-number-of-pull-request-comments/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repoIdOrName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: number
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/git/repositories/{repoIdOrName}/pullRequests/{number}/comments/{commentId}:
+    patch:
+      summary: プルリクエストコメント情報の更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプルリクエストコメントの情報を更新します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-pull-request-comment-information/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repoIdOrName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: number
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: commentId
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/git/repositories/{repoIdOrName}/pullRequests/{number}/attachments:
+    get:
+      summary: プルリクエスト添付ファイル一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプルリクエストの添付ファイルの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-list-of-pull-request-attachment/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repoIdOrName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: number
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/git/repositories/{repoIdOrName}/pullRequests/{number}/attachments/{attachmentId}:
+    get:
+      summary: プルリクエスト添付ファイルのダウンロード
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプルリクエストの添付ファイルをダウンロードします。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/download-pull-request-attachment/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repoIdOrName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: number
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: attachmentId
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      summary: プルリクエスト添付ファイルの削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプルリクエストの添付ファイルを削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-pull-request-attachments/"
+  /api/v2/users/{userId}/watchings:
+    get:
+      summary: ウォッチ一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+        - name: sort
+          in: query
+          description: >-
+            ウォッチ一覧のソートに使用する属性名“created”“updated”“issueUpdated”指定が無い場合は&quot;issueUpdated&quot;
+            : sort
+          schema:
+            type: string
+          example: <文字列>
+        - name: count
+          in: query
+          description: '取得上限(1-100) 指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+        - name: offset
+          in: query
+          description: ' : offset'
+          schema:
+            type: string
+          example: <数値>
+        - name: resourceAlreadyRead
+          in: query
+          description: >-
+            ウォッチしている課題の詳細を既読かどうか。trueの場合は既読のウォッチ、falseの場合は未読のウォッチ、指定しない場合は両方のウォッチを返します。指定が無い場合は両方
+            : resourceAlreadyRead
+          schema:
+            type: string
+          example: <真偽値>
+        - name: issueId[](複数指定可)
+          in: query
+          description: '課題のID : issueId[](複数指定可)'
+          schema:
+            type: string
+          example: <数値>
+      responses: {}
+      description: "# Description\r\n\r\nウォッチの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-watching-list/"
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/users/{userId}/watchings/count:
+    get:
+      summary: ウォッチ数の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: resourceAlreadyRead
+          in: query
+          description: >-
+            既読かどうか。trueの場合は既読のウォッチ、falseの場合は未読のウォッチ、指定しない場合は両方のウォッチを返します。指定が無い場合は両方
+            : resourceAlreadyRead
+          schema:
+            type: string
+          example: <真偽値>
+        - name: alreadyRead
+          in: query
+          description: >-
+            ウォッチメニューの一覧表示後に更新されたウォッチの件数を返します。trueの場合はウォッチメニューを表示した後に更新されていない(既読状態の)件数を返します。falseの場合はウォッチメニューを表示した後に更新された(未読状態の)ウォッチの件数を返します。指定が無い場合は両方を合わせた件数を返します。resourceAlreadyReadが指定してある場合、alreadyReadは使用されません。
+            : alreadyRead
+          schema:
+            type: string
+          example: <真偽値>
+      responses: {}
+      description: "# Description\r\n\r\nウォッチの数を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/count-watching/"
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/watchings/{watchingId}:
+    get:
+      summary: ウォッチ情報の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nウォッチの情報を追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-watching/"
+    parameters:
+      - name: watchingId
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      summary: ウォッチの更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nウォッチを更新します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-watching/"
+    delete:
+      summary: ウォッチの削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nウォッチを削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-watching/"
+  /api/v2/watchings:
+    post:
+      summary: ウォッチの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nウォッチを追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-watching/"
+  /api/v2/watchings/{watchingId}/markAsRead:
+    post:
+      summary: ウォッチの既読化
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nウォッチを既読にします。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/mark-watching-as-read/"
+    parameters:
+      - name: watchingId
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/groups:
+    get:
+      summary: プロジェクトグループ一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n\n       warning\n           このAPIは非推奨です\n          プロジェクトチーム一覧の取得 をご利用ください。\n\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-project-group-list/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      summary: プロジェクトグループの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n\n       warning\n           このAPIは非推奨です\n          プロジェクトチームの追加 をご利用ください。\n\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-project-group/"
+  "/api/v2/projects/{projectIdOrKey}/groups\n":
+    delete:
+      summary: プロジェクトグループの削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n\n       warning\n           このAPIは非推奨です\n          プロジェクトチームの削除 をご利用ください。\n\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-project-group/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/groups/{groupId}/icon:
+    get:
+      summary: グループアイコンの取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\n\n       warning\n           このAPIは非推奨です\n          チームアイコンの取得 をご利用ください。\n\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-group-icon/"
+    parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+  "/api/v2/space/licence\n":
+    get:
+      summary: ライセンス情報の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nライセンスの情報を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-licence/"
+  /api/v2/teams:
+    get:
+      summary: チーム一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+        - name: order
+          in: query
+          description: '“asc&quot;または&quot;desc” 指定が無い場合は&quot;desc&quot; : order'
+          schema:
+            type: string
+          example: <文字列>
+        - name: offset
+          in: query
+          description: ' : offset'
+          schema:
+            type: string
+          example: <数値>
+        - name: count
+          in: query
+          description: '取得上限(1-100)  指定が無い場合は20 : count'
+          schema:
+            type: string
+          example: <数値>
+      responses: {}
+      description: "# Description\r\n\r\nチームの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-list-of-teams/"
+    post:
+      summary: チームの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nチームを追加します。\n新プランのスペースではこのAPIを利用できません。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-team/"
+  /api/v2/teams/{teamId}:
+    get:
+      summary: チーム情報の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nチームの情報を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-team/"
+    parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      summary: チームの削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nチームを削除します。\n新プランのスペースではこのAPIを利用できません。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-team/"
+  '/api/v2/teams/{teamId} ':
+    patch:
+      summary: チーム情報の更新
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nチームの情報を更新します。\n新プランのスペースではこのAPIを利用できません。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/update-team/"
+    parameters:
+      - name: 'teamId '
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/teams/{teamId}/icon:
+    get:
+      summary: チームアイコンの取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nチームアイコン画像を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-team-icon/"
+    parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2/projects/{projectIdOrKey}/teams:
+    get:
+      summary: プロジェクトチーム一覧の取得
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトのチームの一覧を取得します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/get-project-team-list/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      summary: プロジェクトチームの追加
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトにチームを追加します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/add-project-team/"
+  "/api/v2/projects/{projectIdOrKey}/teams\n":
+    delete:
+      summary: プロジェクトチームの削除
+      parameters:
+        - name: apiKey
+          in: query
+          schema:
+            type: string
+          example: '{{ApiKey}}'
+      responses: {}
+      description: "# Description\r\n\r\nプロジェクトからチームを削除します。\r\n\r\n# Reference Url\r\n\r\nhttps://developer.nulab.com/ja/docs/backlog/api/2/delete-project-team/"
+    parameters:
+      - name: projectIdOrKey
+        in: path
+        required: true
+        schema:
+          type: string
