@@ -6,8 +6,9 @@
 	"image": "mcr.microsoft.com/devcontainers/python:3-3.14-trixie",
 	"features": {
 		"ghcr.io/devcontainers/features/copilot-cli:1": {},
-		"ghcr.io/devcontainers/features/github-cli:1": {}
-	}
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/powershell:2": {}
+	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -16,7 +17,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+	"postCreateCommand": "[ -d ~/.copilot/skills ] || git clone https://github.com/tsubakimoto/skills ~/.copilot/skills"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
