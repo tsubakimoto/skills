@@ -14,3 +14,4 @@
 | .NET | https://github.com/dotnet/skills |
 | Azure | https://github.com/microsoft/azure-skills |
 | Awesome GitHub Copilot | https://github.com/github/awesome-copilot |
+| freee | https://github.com/freee/freee-mcp/tree/main/skills%2Ffreee-api-skill |
