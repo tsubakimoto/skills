@@ -16,3 +16,16 @@
 | Awesome GitHub Copilot | https://github.com/github/awesome-copilot |
 | freee | https://github.com/freee/freee-mcp/tree/main/skills%2Ffreee-api-skill |
 | Microsoft | https://github.com/microsoft/skills |
+
+### dotnet/skills
+```
+/plugin marketplace add dotnet/skills
+/plugin install dotnet@dotnet-agent-skills
+/plugin install dotnet-data@dotnet-agent-skills
+/plugin install dotnet-diag@dotnet-agent-skills
+/plugin install dotnet-nuget@dotnet-agent-skills
+/plugin install dotnet-ai@dotnet-agent-skills
+/plugin install dotnet-template-engine@dotnet-agent-skills
+/plugin install dotnet-test@dotnet-agent-skills
+/plugin install dotnet-aspnet@dotnet-agent-skills
+```
