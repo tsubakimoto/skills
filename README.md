@@ -17,6 +17,7 @@
 | Awesome GitHub Copilot | https://github.com/github/awesome-copilot |
 | freee | https://github.com/freee/freee-mcp/tree/main/skills%2Ffreee-api-skill |
 | Microsoft | https://github.com/microsoft/skills |
+| Microsoft Fabric | https://github.com/microsoft/skills-for-fabric |
 
 ### dotnet/skills
 ```
