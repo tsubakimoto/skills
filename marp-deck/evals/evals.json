@@ -1,0 +1,26 @@
+{
+  "skill_name": "marp-deck",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a Marp deck in slides/deck.md for an internal engineering update. The audience is backend and platform engineers. Turn a rough outline into a 7-slide deck with frontmatter, clear slide titles, one section divider, and a recommended workspace layout for images and exports. Keep styling requests minimal and focus on structure.",
+      "expected_output": "A runnable Marp deck with valid frontmatter, sensible slide flow, and paths that fit a practical slide project layout.",
+      "files": [],
+      "expectations": []
+    },
+    {
+      "id": 2,
+      "prompt": "Rewrite a long Markdown project proposal into Marp slides. Use headingDivider only if the source headings already map cleanly to slides; otherwise rewrite into shorter presentation-sized slides. Include notes on where screenshots should live and how to export to PDF and PPTX.",
+      "expected_output": "A Marp-oriented transformation strategy or deck that uses slide-sized content, references image folders, and includes accurate export guidance.",
+      "files": [],
+      "expectations": []
+    },
+    {
+      "id": 3,
+      "prompt": "Set up a new Marp presentation workspace for a product launch. I want deck.md, a place for custom themes, image assets, and generated exports. Give me the folder structure, a starter deck, and examples of Marp background image syntax for a hero slide and a split layout slide.",
+      "expected_output": "A concrete Marp workspace recommendation, starter Markdown, and correct examples of background image syntax.",
+      "files": [],
+      "expectations": []
+    }
+  ]
+}

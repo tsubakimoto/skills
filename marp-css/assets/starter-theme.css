@@ -1,0 +1,138 @@
+/*
+ * @theme brand-deck
+ * @auto-scaling fittingHeader,code,math
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ */
+
+@import 'default';
+
+:root {
+  --color-bg: #0f172a;
+  --color-surface: #16213e;
+  --color-fg: #e5eefb;
+  --color-muted: #a8b6cc;
+  --color-accent: #7dd3fc;
+  --color-accent-strong: #38bdf8;
+  --color-border: rgba(229, 238, 251, 0.18);
+  --color-code-bg: rgba(15, 23, 42, 0.6);
+
+  width: 1280px;
+  height: 720px;
+  padding: 56px 72px 72px;
+  font-family: Inter, "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 30px;
+  line-height: 1.35;
+  color: var(--color-fg);
+  background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.45em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 1.7rem;
+  color: #ffffff;
+}
+
+h2 {
+  font-size: 1.2rem;
+  color: var(--color-accent);
+}
+
+h3 {
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+p,
+ul,
+ol,
+blockquote,
+table {
+  margin: 0 0 0.65em;
+}
+
+strong,
+a {
+  color: var(--color-accent);
+}
+
+code {
+  padding: 0.12em 0.35em;
+  border-radius: 0.25em;
+  background: var(--color-code-bg);
+  font-size: 0.8em;
+}
+
+pre {
+  margin: 0.7em 0 0;
+  padding: 0.9em 1em;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: rgba(2, 6, 23, 0.82);
+}
+
+blockquote {
+  padding-left: 0.8em;
+  border-left: 0.18em solid var(--color-accent-strong);
+  color: var(--color-muted);
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+th,
+td {
+  padding: 0.35em 0.55em;
+  border-bottom: 1px solid var(--color-border);
+}
+
+thead th {
+  color: #ffffff;
+  border-bottom-width: 2px;
+}
+
+header,
+footer {
+  position: absolute;
+  left: 72px;
+  right: 72px;
+  color: var(--color-muted);
+  font-size: 0.42rem;
+}
+
+header {
+  top: 22px;
+}
+
+footer {
+  bottom: 26px;
+}
+
+section::after {
+  content: attr(data-marpit-pagination) ' / ' attr(data-marpit-pagination-total);
+  position: absolute;
+  right: 72px;
+  bottom: 24px;
+  font-size: 0.42rem;
+  color: var(--color-muted);
+}
+
+section.invert {
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-fg: #0f172a;
+  --color-muted: #475569;
+  --color-border: rgba(15, 23, 42, 0.14);
+  --color-code-bg: rgba(15, 23, 42, 0.06);
+  background: #f8fafc;
+  color: var(--color-fg);
+}
