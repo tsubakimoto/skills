@@ -8,6 +8,7 @@ description: >
   asks about GitHub feature announcements, product updates, or wants to understand what changed in
   GitHub on a particular day. This skill fetches all posts from the GitHub Changelog RSS feed for a
   specified date and organizes them into summaries, action plans, and references (URLs).
+license: Proprietary. LICENSE has complete terms.
 ---
 
 # GitHub Changelog Skill

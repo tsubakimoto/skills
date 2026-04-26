@@ -1,6 +1,7 @@
 ---
 name: marp-css
 description: "Use this skill whenever the user is working on Marp or Marpit slide design with CSS: creating a custom theme, restyling a Markdown deck, tuning style blocks, changing colors, typography, spacing, pagination, header/footer, backgrounds, or making a Marp deck look more polished. Trigger on mentions of Marp, Marpit, `@theme`, theme CSS, slide theming, deck styling, Gaia or Uncover customization, split backgrounds, or requests like 'make these Marp slides prettier' even if the user does not explicitly ask for CSS."
+license: Proprietary. LICENSE has complete terms.
 ---
 
 # Marp CSS Design

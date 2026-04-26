@@ -1,6 +1,7 @@
 ---
 name: backlog-api
 description: "Backlog（ヌーラボ社のプロジェクト管理SaaS）のREST API v2に関するエキスパートスキル。課題の作成・検索・更新、プロジェクト管理、Wiki操作、Git/プルリクエスト、通知、チーム管理などBacklog APIを使ったコード生成や自動化を支援する。Backlog APIの認証方式、エンドポイント、パラメータ、エラーハンドリングについて質問されたとき、またはBacklog連携スクリプトやアプリを構築するときに使用する。"
+license: Proprietary. LICENSE has complete terms.
 ---
 
 # Backlog API Expert

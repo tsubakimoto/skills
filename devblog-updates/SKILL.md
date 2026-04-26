@@ -9,6 +9,7 @@ description: >
   for daily Microsoft developer news. This skill fetches all posts from the Microsoft Developer
   Blogs RSS feed for a specified date and organizes each entry into summaries, developer impact,
   action plans, and references.
+license: Proprietary. LICENSE has complete terms.
 ---
 
 # Microsoft Developer Blogs Skill

@@ -1,7 +1,7 @@
 ---
 name: azure-resource-abbreviations
 description: "Use this skill whenever working with Azure resources and you need to define, verify, or understand resource naming conventions and abbreviations. This includes: creating resource naming standards, validating resource names, generating abbreviated names for different resource types, understanding Azure naming best practices, or designing naming schemes for cloud infrastructure. Use this skill whenever someone mentions Azure naming conventions, resource abbreviations, naming standards, or needs to follow Microsoft's Cloud Adoption Framework naming guidelines."
-license: Proprietary
+license: Proprietary. LICENSE has complete terms.
 ---
 
 # Azure Resource Abbreviations Skill

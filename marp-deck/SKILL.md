@@ -1,6 +1,7 @@
 ---
 name: marp-deck
 description: "Use this skill whenever the user wants to create, outline, rewrite, or organize a presentation in Marp or Marpit Markdown. Trigger on requests to turn notes, docs, READMEs, specs, or outlines into slide Markdown; set up `marp: true` frontmatter; choose slide structure, directives, backgrounds, speaker flow, asset folders, or export commands; or build a new Markdown slide deck from scratch. Use it even when the user says 'presentation', 'deck', or 'slides' without naming Marp explicitly but the desired output is a Marp Markdown deck. If the task is mainly theme CSS or visual restyling, also consult `marp-css`."
+license: Proprietary. LICENSE has complete terms.
 ---
 
 # Marp Deck Authoring
