@@ -19,8 +19,9 @@ gh skill install tsubakimoto/skills
 | Name | Repository |
 | --- | --- |
 | .NET | https://github.com/dotnet/skills |
-| Azure | https://github.com/microsoft/azure-skills |
+| Anthropics | https://github.com/anthropics/skills |
 | Awesome GitHub Copilot | https://github.com/github/awesome-copilot |
+| Azure | https://github.com/microsoft/azure-skills |
 | freee | https://github.com/freee/freee-mcp/tree/main/skills%2Ffreee-api-skill |
 | Microsoft | https://github.com/microsoft/skills |
 | Microsoft Fabric | https://github.com/microsoft/skills-for-fabric |
