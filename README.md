@@ -13,7 +13,6 @@ gh skill install tsubakimoto/skills
 | [github-changelog](./github-changelog/) | Summarize the [GitHub Changelog](https://github.blog/changelog/). |
 | [marp-css](./marp-css/) | Marp design. |
 | [marp-deck](./marp-deck/) | Marp deck. |
-| [skill-creator](./skill-creator/) | [anthropics/skills](https://github.com/anthropics/skills/blob/3d59511518591fa82e6cfcf0438d68dd5dad3e76/skills/skill-creator) |
 
 ## Favorite agent skills
 | Name | Repository |
