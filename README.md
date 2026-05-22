@@ -25,6 +25,7 @@ gh skill install tsubakimoto/skills
 | Microsoft | https://github.com/microsoft/skills |
 | Microsoft Fabric | https://github.com/microsoft/skills-for-fabric |
 | Microsoft Work IQ | https://github.com/microsoft/work-iq |
+| WinUI | https://github.com/microsoft/win-dev-skills |
 
 ### dotnet/skills
 ```
