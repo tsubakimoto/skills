@@ -137,12 +137,9 @@ var resourceName = '${abbreviation}-${environment}-${instance}'
 ```
 
 ### 4. Validation Scripts
-Create scripts to validate names:
-```python
-from azure_abbreviations import get_abbreviation, validate_naming_convention
-
-# Validate a resource name
-is_valid = validate_naming_convention("Virtual Machine", "vm")
+Create scripts to validate names against the bundled JSON reference:
+```bash
+dotnet run --file scripts\lookup_abbreviation.cs -- "Virtual Machine"
 ```
 
 ## Common Mistakes to Avoid

@@ -14,10 +14,10 @@ license: Proprietary. LICENSE has complete terms.
 
 | Task | Command |
 |------|---------|
-| Look up abbreviation | `python scripts/lookup_abbreviation.py <resource_type>` |
-| List all categories | `python scripts/list_categories.py` |
-| Get category resources | `python scripts/get_category.py <category>` |
-| Generate naming template | `python scripts/generate_template.py <resource_type>` |
+| Look up abbreviation | `dotnet run --file scripts\lookup_abbreviation.cs -- <resource_type>` |
+| List all categories | `dotnet run --file scripts\list_categories.cs` |
+| Get category resources | `dotnet run --file scripts\get_category.cs -- <category>` |
+| Generate naming template | `dotnet run --file scripts\generate_template.cs -- <resource_type>` |
 
 ---
 
@@ -35,22 +35,20 @@ Azure resources should follow consistent naming conventions to ensure:
 
 ## Resource Categories
 
-Azure resources are organized into the following categories:
+The JSON-backed scripts surface the following categories:
 
-1. **AI + Machine Learning** - Cognitive services, ML workspaces, AI tools
+1. **AI + Machine Learning** - Cognitive services, ML workspaces, AI search
 2. **Analytics and IoT** - Data services, event processing, IoT resources
 3. **Compute and Web** - VMs, App Services, Functions, cloud services
 4. **Containers** - AKS, Container Registry, Container Instances
 5. **Databases** - SQL, Cosmos DB, MySQL, PostgreSQL
-6. **Developer Tools** - App Configuration, Maps, SignalR
-7. **DevOps** - CI/CD, monitoring, automation
-8. **Integration** - API Management, Logic Apps, Service Bus
-9. **Management and Governance** - Automation, Monitoring, policies
-10. **Migration** - Migration projects, DMS, Recovery Services
-11. **Networking** - VNets, Load Balancers, gateways, firewalls
-12. **Security** - Key Vault, Managed Identity, Bastion
-13. **Storage** - Storage Accounts, Backup, File Shares
-14. **Virtual Desktop Infrastructure** - AVD, host pools, workspaces
+6. **Developer Tools** - App Configuration, SignalR
+7. **Integration** - API Management, Logic Apps, Service Bus
+8. **Management and Governance** - Automation, Monitoring, dashboards, policy
+9. **Migration** - Migration projects, DMS, Recovery Services
+10. **Networking** - VNets, Load Balancers, gateways, firewalls
+11. **Security** - Key Vault, Managed Identity, Bastion, VPN
+12. **Storage** - Storage Accounts and related services
 
 ---
 
@@ -129,41 +127,42 @@ Azure resources are organized into the following categories:
 ## Reference Documentation
 
 For the complete list of Azure resource abbreviations and naming conventions, see:
+- `azure-resource-abbreviations\references\abbreviations.json`
 - [Microsoft Cloud Adoption Framework - Resource Abbreviations](https://learn.microsoft.com/ja-jp/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Azure Naming Tool](https://github.com/mspnp/AzureNamingTool)
 
 ---
 
-## Python Scripts
+## C# file-based app scripts
 
-This skill includes utility scripts for working with Azure resource abbreviations:
+This skill includes utility scripts implemented as C# file-based apps. They read `azure-resource-abbreviations\references\abbreviations.json` as the authoritative prefix catalog. Because these scripts use `#:include`, they require .NET SDK 10.0.300 or later.
 
-### `lookup_abbreviation.py`
+### `lookup_abbreviation.cs`
 Look up the standard abbreviation for a specific Azure resource type.
 
 ```bash
-python scripts/lookup_abbreviation.py "Virtual Machine"
+dotnet run --file scripts\lookup_abbreviation.cs -- "Virtual Machine"
 ```
 
-### `list_categories.py`
+### `list_categories.cs`
 Display all available resource categories.
 
 ```bash
-python scripts/list_categories.py
+dotnet run --file scripts\list_categories.cs
 ```
 
-### `get_category.py`
+### `get_category.cs`
 List all resources in a specific category with their abbreviations.
 
 ```bash
-python scripts/get_category.py "Networking"
+dotnet run --file scripts\get_category.cs -- "Networking"
 ```
 
-### `generate_template.py`
+### `generate_template.cs`
 Generate a naming template for a specific resource type.
 
 ```bash
-python scripts/generate_template.py "App Service"
+dotnet run --file scripts\generate_template.cs -- "Web App"
 ```
 
 ---
