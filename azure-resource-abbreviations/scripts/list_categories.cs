@@ -4,7 +4,7 @@
 
 var categories = AzureResourceAbbreviationsSupport.GetCategories();
 
-Console.WriteLine("Available Azure Resource Categories:");
+Console.WriteLine("Available Azure resource categories:");
 Console.WriteLine();
 
 for (var index = 0; index < categories.Count; index++)
@@ -14,5 +14,5 @@ for (var index = 0; index < categories.Count; index++)
 
 Console.WriteLine();
 Console.WriteLine($"Total: {categories.Count} categories");
-Console.WriteLine("Use 'dotnet run --file scripts\\get_category.cs -- <category_name>' to see resources in a category.");
+Console.WriteLine("Use 'dotnet run --file scripts\\get_category.cs -- <category_name>' to list resources in one category.");
 return 0;

@@ -33,12 +33,12 @@ if (entries.Count == 0)
 
 Console.WriteLine($"[{entries[0].Category}]");
 Console.WriteLine();
-Console.WriteLine($"{"Display name",-34} {"Resource key",-44} {"Prefix",-12}");
-Console.WriteLine(new string('-', 92));
+Console.WriteLine($"{"Display name",-34} {"Resource key",-44} {"Official",-12} {"Token",-12}");
+Console.WriteLine(new string('-', 106));
 
 foreach (var entry in entries)
 {
-    Console.WriteLine($"{entry.DisplayName,-34} {entry.ResourceTypeKey,-44} {entry.OfficialPrefix,-12}");
+    Console.WriteLine($"{entry.DisplayName,-34} {entry.ResourceTypeKey,-44} {entry.OfficialPrefix,-12} {entry.NamingToken,-12}");
 }
 
 Console.WriteLine();

@@ -8,8 +8,8 @@ if (args.Length == 0)
     Console.WriteLine();
     Console.WriteLine("Examples:");
     Console.WriteLine("  dotnet run --file scripts\\lookup_abbreviation.cs -- \"Virtual Machine\"");
-    Console.WriteLine("  dotnet run --file scripts\\lookup_abbreviation.cs -- webSitesAppService");
-    Console.WriteLine("  dotnet run --file scripts\\lookup_abbreviation.cs -- sql");
+    Console.WriteLine("  dotnet run --file scripts\\lookup_abbreviation.cs -- \"Storage Account\"");
+    Console.WriteLine("  dotnet run --file scripts\\lookup_abbreviation.cs -- \"webSitesAppService\"");
     return 1;
 }
 
@@ -25,7 +25,7 @@ var results = AzureResourceAbbreviationsSupport.Search(query);
 if (results.Count == 0)
 {
     Console.WriteLine($"No abbreviation found for '{query}'.");
-    Console.WriteLine($"Reference file: {AzureResourceAbbreviationsSupport.GetReferencePath()}");
+    Console.WriteLine($"Local catalog: {AzureResourceAbbreviationsSupport.GetReferencePath()}");
     return 1;
 }
 
@@ -48,8 +48,9 @@ return 0;
 
 static void PrintEntry(AzureResourceEntry entry, string indent = "")
 {
-    Console.WriteLine($"{indent}Display name: {entry.DisplayName}");
-    Console.WriteLine($"{indent}Resource key:  {entry.ResourceTypeKey}");
-    Console.WriteLine($"{indent}Category:      {entry.Category}");
-    Console.WriteLine($"{indent}Prefix:        {entry.OfficialPrefix}");
+    Console.WriteLine($"{indent}Display name:    {entry.DisplayName}");
+    Console.WriteLine($"{indent}Resource key:    {entry.ResourceTypeKey}");
+    Console.WriteLine($"{indent}Category:        {entry.Category}");
+    Console.WriteLine($"{indent}Official prefix: {entry.OfficialPrefix}");
+    Console.WriteLine($"{indent}Naming token:    {entry.NamingToken}");
 }

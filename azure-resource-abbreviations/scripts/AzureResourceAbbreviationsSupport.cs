@@ -216,6 +216,26 @@ internal static partial class AzureResourceAbbreviationsSupport
     public static IReadOnlyList<AzureResourceEntry> Search(string query)
     {
         var normalizedQuery = Normalize(query);
+        if (AliasMap.TryGetValue(query.Trim(), out var aliasKey))
+        {
+            var aliasMatch = Entries.FirstOrDefault(entry => entry.ResourceTypeKey == aliasKey);
+            if (aliasMatch is not null)
+            {
+                return
+                [
+                    aliasMatch,
+                    ..Entries.Where(entry => entry.ResourceTypeKey != aliasKey &&
+                        (Normalize(entry.ResourceTypeKey).Contains(normalizedQuery, StringComparison.Ordinal) ||
+                         Normalize(entry.DisplayName).Contains(normalizedQuery, StringComparison.Ordinal) ||
+                         Normalize(entry.Category).Contains(normalizedQuery, StringComparison.Ordinal) ||
+                         Normalize(entry.NamingToken).Contains(normalizedQuery, StringComparison.Ordinal) ||
+                         Normalize(entry.OfficialPrefix).Contains(normalizedQuery, StringComparison.Ordinal)))
+                        .OrderBy(entry => entry.Category, StringComparer.Ordinal)
+                        .ThenBy(entry => entry.DisplayName, StringComparer.Ordinal)
+                ];
+            }
+        }
+
         return Entries
             .Where(entry =>
                 Normalize(entry.ResourceTypeKey).Contains(normalizedQuery, StringComparison.Ordinal) ||

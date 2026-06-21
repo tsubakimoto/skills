@@ -5,8 +5,8 @@
 var namingTemplates = new Dictionary<string, (string Template, string Example, string Description)>(StringComparer.Ordinal)
 {
     ["standard"] = ("{abbr}-{env}-{instance}-{region}", "{abbr}-prod-web01-eus", "Resource-Environment-Instance-Region"),
-    ["simple"] = ("{abbr}{env}{instance}", "{abbr}prod1", "ResourceEnvironmentInstance (no separators)"),
-    ["descriptive"] = ("{abbr}-{purpose}-{env}-{instance}", "{abbr}-webserver-prod-01", "Resource-Purpose-Environment-Instance")
+    ["simple"] = ("{abbr}{env}{instance}", "{abbr}prod1", "ResourceEnvironmentInstance without separators"),
+    ["descriptive"] = ("{abbr}-{purpose}-{env}-{instance}", "{abbr}-web-prod-01", "Resource-Purpose-Environment-Instance")
 };
 
 var environmentCodes = new Dictionary<string, string>(StringComparer.Ordinal)
@@ -34,7 +34,7 @@ if (args.Length == 0)
     Console.WriteLine();
     Console.WriteLine("Examples:");
     Console.WriteLine("  dotnet run --file scripts\\generate_template.cs -- \"Virtual Machine\"");
-    Console.WriteLine("  dotnet run --file scripts\\generate_template.cs -- webSitesAppService");
+    Console.WriteLine("  dotnet run --file scripts\\generate_template.cs -- \"Storage Account\"");
     return 1;
 }
 
@@ -48,7 +48,7 @@ if (entry is null)
 if (entry is null)
 {
     Console.WriteLine($"Resource type '{query}' not found.");
-    Console.WriteLine($"Reference file: {AzureResourceAbbreviationsSupport.GetReferencePath()}");
+    Console.WriteLine($"Local catalog: {AzureResourceAbbreviationsSupport.GetReferencePath()}");
     return 1;
 }
 
@@ -75,14 +75,14 @@ Console.WriteLine(new string('=', 70));
 Console.WriteLine();
 Console.WriteLine("NAMING COMPONENTS");
 Console.WriteLine();
-Console.WriteLine("Environment Codes:");
+Console.WriteLine("Environment codes:");
 foreach (var (code, meaning) in environmentCodes)
 {
     Console.WriteLine($"  {code,-6} = {meaning}");
 }
 
 Console.WriteLine();
-Console.WriteLine("Common Region Codes:");
+Console.WriteLine("Common region codes:");
 foreach (var (code, meaning) in regionCodes)
 {
     Console.WriteLine($"  {code,-8} = {meaning}");
@@ -91,10 +91,9 @@ foreach (var (code, meaning) in regionCodes)
 Console.WriteLine();
 Console.WriteLine(new string('=', 70));
 Console.WriteLine();
-Console.WriteLine("BEST PRACTICES:");
+Console.WriteLine("Notes:");
 Console.WriteLine("  - Use lowercase letters and numbers.");
-Console.WriteLine("  - Use hyphens (-) as separators unless the resource type forbids them.");
-Console.WriteLine("  - Keep names concise but descriptive.");
-Console.WriteLine("  - Include environment and region for production resources.");
-Console.WriteLine("  - Use the JSON reference as the authoritative source for prefixes.");
+Console.WriteLine("  - Use hyphens unless the resource type forbids them.");
+Console.WriteLine("  - Check resource-specific naming restrictions before finalizing the name.");
+Console.WriteLine("  - Use the Microsoft Learn page to confirm governance-sensitive naming decisions.");
 return 0;
