@@ -19,7 +19,7 @@ Backlog API v2 を使った開発を支援するスキル。
 
 - Backlogスペースへのアクセス権
 - API Key（スペースの「個人設定」>「API」から発行）または OAuth 2.0 アクセストークン
-- Python: `requests` パッケージ（`pip install requests`）
+- .NET 10 SDK 以降（C# file-based app 実行用）
 
 ## 認証
 
@@ -81,11 +81,11 @@ statusId[]=1&statusId[]=2
 - `{issueIdOrKey}`: 数値ID または課題キー（例: `PROJECT-123`）
 - `{projectIdOrKey}`: 数値ID またはプロジェクトキー（例: `PROJECT`）
 
-## Pythonスクリプト
+## C#スクリプト
 
-基本的な操作は [scripts/backlog_api.py](./scripts/backlog_api.py) を実行または参照する。
+基本的な操作は C# file-based app の [scripts/backlog_api.cs](./scripts/backlog_api.cs) を実行または参照する。
 
-```python
+```bash
 # 実行例
-python scripts/backlog_api.py --space myspace --api-key YOUR_KEY get-issues --project-id 12345
+dotnet run --file scripts\backlog_api.cs -- --space myspace --api-key YOUR_KEY get-issues --project-id 12345
 ```
