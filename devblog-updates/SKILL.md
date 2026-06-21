@@ -24,7 +24,7 @@ license: Proprietary. LICENSE has complete terms.
 
 | タスク | コマンド |
 |--------|---------|
-| 指定日の投稿を取得 | `python scripts/fetch_devblog_updates.py <YYYY-MM-DD>` |
+| 指定日の投稿を取得 | `dotnet run --file scripts\fetch_devblog_updates.cs -- <YYYY-MM-DD>` |
 
 ---
 
@@ -45,7 +45,7 @@ license: Proprietary. LICENSE has complete terms.
 ## Running the Script
 
 ```bash
-python scripts/fetch_devblog_updates.py <YYYY-MM-DD>
+dotnet run --file scripts\fetch_devblog_updates.cs -- <YYYY-MM-DD>
 ```
 
 スクリプトは `https://devblogs.microsoft.com/landing` から RSS フィードを取得し、
@@ -53,7 +53,7 @@ python scripts/fetch_devblog_updates.py <YYYY-MM-DD>
 
 **例:**
 ```bash
-python scripts/fetch_devblog_updates.py 2026-04-08
+dotnet run --file scripts\fetch_devblog_updates.cs -- 2026-04-08
 ```
 
 スクリプト出力例（JSON）:
