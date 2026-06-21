@@ -3,4 +3,4 @@
 - スキルの詳細は各スキルの `SKILL.md` を参照します。
 - スキル作成は `/skill-creator` スキルを使用します。
 - スキルのスクリプトは C# file-based apps で作成します。
-- Microsoft の情報は Microsoft Learn MCP Server で取得します。
+- Microsoft の情報は Microsoft Learn MCP Server で取得します。(C# file-based apps を除く)
