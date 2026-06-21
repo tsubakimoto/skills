@@ -21,18 +21,15 @@ license: Proprietary. LICENSE has complete terms.
 
 ## Quick Reference
 
-| タスク | コマンド |
-|--------|---------|
-| 参照トピック一覧 | `python scripts/file_based_apps_reference.py list` |
-| トピック詳細表示 | `python scripts/file_based_apps_reference.py show directives` |
-| サンプル生成 | `python scripts/file_based_apps_reference.py example web` |
+- 基本仕様は `references/file-based-apps.md` を参照する
+- 実装例が必要なときは `Examples` セクションの最小サンプルから組み立てる
 
 ---
 
 ## Workflow
 
 1. まずユーザーが求めているのが **新規の file-based app 作成**、**既存スクリプトの改善**、**従来の .csproj との変換・比較**、**トラブルシュート** のどれかを判断する。
-2. `references/file-based-apps.md` を参照し、使えるディレクティブ・CLI・制約を確認する。細かい例が必要なら Python スクリプトで該当トピックやサンプルを引く。
+2. `references/file-based-apps.md` を参照し、使えるディレクティブ・CLI・制約を確認する。細かい例が必要ならこの SKILL.md の `Examples` と参照資料を優先して使う。
 3. 提案や生成を行うときは、以下を明確にする。
    - 対象 SDK と前提（**.NET 10 SDK 以降**。`#:include` は SDK 10.0.300+ / .NET 11 Preview 3+）
    - どの `#:` ディレクティブを使うべきか
