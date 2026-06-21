@@ -2,50 +2,50 @@
 
 Source: https://learn.microsoft.com/en-us/dotnet/core/sdk/file-based-apps
 
-このリファレンスは Microsoft Learn の **File-based apps** 記事をもとに、Skill で参照しやすいように整理したものです。最新仕様の確認が必要なときは元記事も見ること。
+This reference reorganizes the Microsoft Learn **File-based apps** article into a format that is easier to use inside the skill. If you need to confirm the latest behavior, check the source article as well.
 
 ## Applies to
 
 - **.NET 10 SDK and later**
-- `#:include` は **.NET 11 Preview 3 / .NET SDK 10.0.300+** で利用可能
+- `#:include` is available in **.NET 11 Preview 3 / .NET SDK 10.0.300+**
 
 ## Core idea
 
-File-based apps は、従来の `.csproj` を作らず **単一の C# ファイル** から build / run / publish / pack できる仕組み。
+File-based apps let you build, run, publish, and pack a **single C# file** without first creating a traditional `.csproj`.
 
-向いている用途:
+Good fits include:
 
-- 使い捨てではないが小さいユーティリティ
-- 単一ファイルで配布したいツール
-- サンプルコードや検証用アプリ
-- プロジェクトの作成コストを避けたい小規模アプリ
+- Small utilities that are more than throwaway snippets
+- Tools you want to distribute as a single file or lightweight app
+- Sample code and experimental apps
+- Small applications where creating a full project would add unnecessary overhead
 
 ## Supported directives
 
 ### `#:package`
 
-NuGet パッケージ参照を追加する。
+Adds a NuGet package reference.
 
 ```csharp
 #:package Newtonsoft.Json@13.0.3
 #:package Spectre.Console@*
 ```
 
-補足:
+Notes:
 
-- バージョン省略は、中央パッケージ管理 (`Directory.Packages.props`) がある場合のみ確実
-- それ以外はバージョンを明示するか `@*` を使う
+- Omitting a version is reliable only when central package management (`Directory.Packages.props`) is in use
+- Otherwise, specify a version explicitly or use `@*`
 
 ### `#:property`
 
-MSBuild property を設定する。
+Sets an MSBuild property.
 
 ```csharp
 #:property TargetFramework=net10.0
 #:property PublishAot=false
 ```
 
-環境変数や property function も利用可能:
+Environment variables and property functions are also supported:
 
 ```csharp
 #:property LogLevel=$([MSBuild]::ValueOrDefault('$(LOG_LEVEL)', 'Information'))
@@ -53,7 +53,7 @@ MSBuild property を設定する。
 
 ### `#:project`
 
-別プロジェクトを参照する。
+References another project.
 
 ```csharp
 #:project ../SharedLibrary/SharedLibrary.csproj
@@ -61,7 +61,7 @@ MSBuild property を設定する。
 
 ### `#:sdk`
 
-使用する SDK を切り替える。既定は `Microsoft.NET.Sdk`。
+Switches the SDK. The default is `Microsoft.NET.Sdk`.
 
 ```csharp
 #:sdk Microsoft.NET.Sdk.Web
@@ -69,21 +69,21 @@ MSBuild property を設定する。
 
 ### `#:include`
 
-追加ファイルを取り込む。
+Includes extra files.
 
 ```csharp
 #:include helpers.cs
 #:include shared/**/*.cs
 ```
 
-補足:
+Notes:
 
 - `.cs` → `Compile`
 - `.resx` → `EmbeddedResource`
 - `.json` → `None`
 - `.razor` → `Content`
-- 取り込まれる `.cs` ファイルに top-level statements は書けない
-- glob を使うと現在は build cache が無効化される
+- Included `.cs` files can't contain top-level statements
+- Using globs currently disables build caching
 
 ## CLI commands
 
@@ -95,22 +95,22 @@ dotnet run app.cs
 dotnet app.cs
 ```
 
-引数を渡す:
+Pass arguments:
 
 ```bash
 dotnet run app.cs -- arg1 arg2
 ```
 
-stdin から実行:
+Run from stdin:
 
 ```powershell
 'Console.WriteLine("hello from stdin!");' | dotnet run -
 ```
 
-注意:
+Notes:
 
-- カレントディレクトリに project file がある場合、`dotnet run app.cs` はその project を実行して `app.cs` を引数として渡すことがある
-- file-based app を確実に指したいときは `--file` を優先する
+- If a project file exists in the current directory, `dotnet run app.cs` might run that project and pass `app.cs` as an argument
+- Prefer `--file` when you need to target the file-based app explicitly
 
 ### Build
 
@@ -118,9 +118,9 @@ stdin から実行:
 dotnet build app.cs
 ```
 
-- 既定出力先は temp 配下
-- 任意の出力先が必要なら `--output`
-- 既定の出力先を変えるなら `#:property OutputPath=./output`
+- The default output path is under the system temp directory
+- Use `--output` for a custom location
+- Set `#:property OutputPath=./output` to change the default output path
 
 ### Clean
 
@@ -129,7 +129,7 @@ dotnet clean app.cs
 dotnet clean file-based-apps
 ```
 
-- 後者は file-based apps 用キャッシュをまとめて掃除する
+- The second command clears the file-based apps cache
 
 ### Publish
 
@@ -137,9 +137,9 @@ dotnet clean file-based-apps
 dotnet publish app.cs
 ```
 
-- **Native AOT は既定で有効**
-- 無効化するなら `#:property PublishAot=false`
-- 既定では `.cs` ファイルの隣に `artifacts` ディレクトリが作られる
+- **Native AOT is enabled by default**
+- Disable it with `#:property PublishAot=false`
+- By default, an `artifacts` directory is created next to the `.cs` file
 
 ### Pack
 
@@ -147,8 +147,8 @@ dotnet publish app.cs
 dotnet pack app.cs
 ```
 
-- **PackAsTool=true が既定**
-- .NET tool にしたくないなら `#:property PackAsTool=false`
+- **PackAsTool=true is the default**
+- Use `#:property PackAsTool=false` if you don't want a .NET tool package
 
 ### Convert
 
@@ -156,7 +156,7 @@ dotnet pack app.cs
 dotnet project convert app.cs
 ```
 
-- 元の `.cs` はそのまま残しつつ、新しいディレクトリに `.csproj` とコピーされた `.cs` を生成する
+- Leaves the original `.cs` file untouched and creates a new directory with a `.csproj` and copied `.cs` file
 
 ### Restore
 
@@ -164,7 +164,7 @@ dotnet project convert app.cs
 dotnet restore app.cs
 ```
 
-- 通常は build / run 時に暗黙 restore される
+- Restore usually happens implicitly during build and run
 
 ## User secrets
 
@@ -173,14 +173,14 @@ dotnet user-secrets set "ApiKey" "your-secret-value" --file app.cs
 dotnet user-secrets list --file app.cs
 ```
 
-- user secrets ID はファイルのフルパス由来で安定化される
-- `list` は値を出力するので公開文脈で使わない
+- The user secrets ID is stabilized from the full file path
+- `list` prints secret values, so avoid it in public contexts
 
 ## Launch profiles
 
-file-based apps では `Properties/launchSettings.json` に加えて、同じディレクトリに **`[ApplicationName].run.json`** を置ける。
+File-based apps can use **`[ApplicationName].run.json`** in the same directory, in addition to `Properties/launchSettings.json`.
 
-例: `app.cs` に対して `app.run.json`
+Example: `app.run.json` for `app.cs`
 
 ```json
 {
@@ -198,17 +198,17 @@ file-based apps では `Properties/launchSettings.json` に加えて、同じデ
 }
 ```
 
-選択優先順位:
+Selection priority:
 
 1. `--launch-profile`
 2. `DOTNET_LAUNCH_PROFILE`
-3. 定義順の最初の profile
+3. The first profile defined in the file
 
-従来の `Properties/launchSettings.json` も使えるが、両方あると従来形式が優先される。
+The traditional `Properties/launchSettings.json` file is also supported, and it takes priority when both formats exist.
 
 ## Shell execution
 
-Unix 系では shebang で直接実行できる。
+On Unix-like systems, you can run the file directly with a shebang.
 
 ```csharp
 #!/usr/bin/env -S dotnet --
@@ -219,15 +219,15 @@ using Spectre.Console;
 AnsiConsole.MarkupLine("[green]Hello, World![/]");
 ```
 
-注意:
+Notes:
 
-- 実行権限が必要
-- shebang を使うなら **LF 改行**、BOM なし
-- `--` はアプリ引数を `dotnet` に食われないようにするため
+- Executable permission is required
+- Use **LF line endings** and no BOM with a shebang
+- `--` prevents `dotnet` from consuming arguments meant for the app
 
 ## Implicit build files
 
-親ディレクトリの次のファイルは file-based app に影響する:
+These files in parent directories can affect a file-based app:
 
 - `Directory.Build.props`
 - `Directory.Build.targets`
@@ -235,23 +235,23 @@ AnsiConsole.MarkupLine("[green]Hello, World![/]");
 - `nuget.config`
 - `global.json`
 
-問題が再現しづらいときは、これらの有無と内容を確認する。
+When behavior is hard to explain, check whether these files exist and what they contain.
 
 ## Build caching
 
-キャッシュのキーはおおむね次で決まる:
+The cache key is broadly influenced by:
 
-- ソース内容
-- ディレクティブ構成
-- SDK バージョン
-- implicit build files の存在と内容
+- Source contents
+- Directive configuration
+- SDK version
+- The presence and contents of implicit build files
 
-ハマりどころ:
+Common gotchas:
 
-- implicit build files の変更で期待通り再ビルドされないように見えることがある
-- 同じ file-based app を並列起動すると build 出力の競合でエラーになることがある
+- Changes to implicit build files might not look like they triggered a rebuild
+- Running the same file-based app concurrently can cause build output contention
 
-並列実行したい場合:
+If you need concurrent runs:
 
 ```bash
 dotnet build app.cs
@@ -262,9 +262,9 @@ dotnet run app.cs --no-build
 
 ### Avoid project file cones
 
-`.csproj` 配下の subtree に file-based app を置かないほうがよい。
+Avoid placing file-based apps inside the subtree of a `.csproj`.
 
-悪い例:
+Not recommended:
 
 ```text
 MyProject/
@@ -274,7 +274,7 @@ MyProject/
     └── utility.cs
 ```
 
-良い例:
+Recommended:
 
 ```text
 MyProject/
@@ -287,4 +287,4 @@ scripts/
 
 ### Be mindful of implicit files
 
-file-based apps ごとに違う build 条件が欲しいなら、影響を受ける親ディレクトリを分ける。
+If different file-based apps need different build conditions, isolate them under different parent directories so implicit files don't leak across them.

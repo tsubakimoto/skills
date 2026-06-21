@@ -13,7 +13,7 @@ license: Proprietary. LICENSE has complete terms.
 
 # C# File-based Apps Skill
 
-最新の .NET における **C# File-based apps** を扱うためのスキルです。`dotnet run app.cs` / `dotnet app.cs` のような単一 `.cs` ファイル実行、`#:` ディレクティブ、publish / pack / convert、launch profile、user secrets、build cache、配置指針まで一貫して扱います。
+This skill covers **C# file-based apps** on the latest .NET. Use it for single-file `.cs` execution with `dotnet run app.cs` or `dotnet app.cs`, `#:` directives, publish / pack / convert workflows, launch profiles, user secrets, build caching, and folder layout guidance.
 
 ## Skill directory
 
@@ -21,58 +21,58 @@ license: Proprietary. LICENSE has complete terms.
 
 ## Quick Reference
 
-- 基本仕様は `references/file-based-apps.md` を参照する
-- 実装例が必要なときは `Examples` セクションの最小サンプルから組み立てる
+- Use `references/file-based-apps.md` for the core reference.
+- Start from the minimal samples in the `Examples` section when you need working code.
 
 ---
 
 ## Workflow
 
-1. まずユーザーが求めているのが **新規の file-based app 作成**、**既存スクリプトの改善**、**従来の .csproj との変換・比較**、**トラブルシュート** のどれかを判断する。
-2. `references/file-based-apps.md` を参照し、使えるディレクティブ・CLI・制約を確認する。細かい例が必要ならこの SKILL.md の `Examples` と参照資料を優先して使う。
-3. 提案や生成を行うときは、以下を明確にする。
-   - 対象 SDK と前提（**.NET 10 SDK 以降**。`#:include` は SDK 10.0.300+ / .NET 11 Preview 3+）
-   - どの `#:` ディレクティブを使うべきか
-   - `dotnet run` / `build` / `publish` / `pack` / `restore` / `project convert` のどれが適切か
-   - 既存の `Directory.Build.props` や `global.json` など暗黙の影響がないか
-4. 実装例を出すときは **単一ファイルで成立する最小例** を優先し、追加ファイルや変換が必要な場合だけ理由付きで広げる。
-5. 断定してよいのは Microsoft Learn で確認できる内容に限る。プレビュー要素や OS 差分は明示する。
+1. First determine whether the user needs **a new file-based app**, **an improvement to an existing utility**, **a conversion from or to a traditional `.csproj`**, or **troubleshooting**.
+2. Check `references/file-based-apps.md` for supported directives, CLI behavior, and constraints. If you need examples, prefer the samples in this SKILL.md and the bundled reference.
+3. When proposing code or commands, make these points explicit:
+   - SDK requirements and prerequisites (**.NET 10 SDK or later**; `#:include` requires SDK 10.0.300+ / .NET 11 Preview 3+)
+   - Which `#:` directives are appropriate
+   - Whether `dotnet run`, `build`, `publish`, `pack`, `restore`, or `project convert` is the right command
+   - Whether implicit files such as `Directory.Build.props` or `global.json` might affect the result
+4. Prefer the **smallest single-file example that actually works**, and only introduce extra files or conversion steps when there is a clear reason.
+5. Only state behavior as fact when it is supported by Microsoft Learn. Call out preview-only features and OS-specific differences.
 
 ---
 
 ## What to help with
 
-- 単一 `.cs` ファイルでの実行・ビルド・配布
-- `#:` ディレクティブの使い分け
-- NuGet パッケージ参照、別プロジェクト参照、MSBuild property の設定
-- Native AOT の既定挙動と無効化
-- .NET tool としての pack
-- `dotnet project convert` による従来プロジェクト化
-- `app.run.json` を使った launch profile
+- Running, building, and distributing a single `.cs` file
+- Choosing the right `#:` directives
+- NuGet package references, project references, and MSBuild properties
+- Native AOT defaults and how to disable them
+- Packing as a .NET tool
+- Converting to a traditional project with `dotnet project convert`
+- Launch profiles via `app.run.json`
 - `dotnet user-secrets ... --file app.cs`
-- build cache や配置ミスによるハマりどころ
+- Troubleshooting build cache and folder layout issues
 
 ---
 
 ## Supported directives
 
-File-based apps では、C# ファイル先頭に `#:` で始まるディレクティブを置く。
+File-based apps place `#:` directives at the top of the C# file.
 
-| Directive | 用途 | 例 |
+| Directive | Purpose | Example |
 |-----------|------|----|
-| `#:package` | NuGet パッケージ参照 | `#:package Spectre.Console@*` |
-| `#:property` | MSBuild property 設定 | `#:property PublishAot=false` |
-| `#:project` | 別プロジェクト参照 | `#:project ../Shared/Shared.csproj` |
-| `#:sdk` | 使用 SDK 指定 | `#:sdk Microsoft.NET.Sdk.Web` |
-| `#:include` | 追加ファイル取り込み | `#:include shared/**/*.cs` |
+| `#:package` | Add a NuGet package reference | `#:package Spectre.Console@*` |
+| `#:property` | Set an MSBuild property | `#:property PublishAot=false` |
+| `#:project` | Reference another project | `#:project ../Shared/Shared.csproj` |
+| `#:sdk` | Select the SDK | `#:sdk Microsoft.NET.Sdk.Web` |
+| `#:include` | Include extra files | `#:include shared/**/*.cs` |
 
 ### Guidance
 
-- 使えないディレクティブを作らない。使うのは上の 5 種類だけ。
-- `#:package` は、中央管理がない限りバージョン明示を優先する。最新版追従なら `@*` を使う。
-- `#:include` で取り込む `.cs` ファイルには **top-level statements を置けない**。型・メソッド・namespace などを定義する。
-- `#:property` では MSBuild property function や環境変数参照も使えるが、複雑にしすぎず目的を説明する。
-- ASP.NET Core 系や設定ファイル込みの例では `#:sdk Microsoft.NET.Sdk.Web` を検討する。
+- Do not invent unsupported directives. Use only the five directives listed above.
+- For `#:package`, prefer explicit versions unless the repo uses central package management. Use `@*` when "latest available" is the goal.
+- Included `.cs` files in `#:include` cannot contain **top-level statements**. Use them for types, methods, namespaces, and related declarations.
+- `#:property` can use MSBuild property functions and environment variables, but keep the setup understandable and explain why it is needed.
+- For ASP.NET Core or configuration-driven examples, consider `#:sdk Microsoft.NET.Sdk.Web`.
 
 ---
 
@@ -86,7 +86,7 @@ dotnet app.cs
 dotnet run app.cs -- arg1 arg2
 ```
 
-- カレントディレクトリに `.csproj` がある場合、`dotnet run app.cs` は互換性のため **そのプロジェクトを実行して `app.cs` を引数として渡す** ことがある。曖昧さを避けたいときは `--file` を使う。
+- If a `.csproj` exists in the current directory, `dotnet run app.cs` might, for backward compatibility, **run that project and pass `app.cs` as an argument**. Use `--file` when you need unambiguous file-based behavior.
 
 ### Build / Clean / Restore
 
@@ -105,26 +105,26 @@ dotnet pack app.cs
 dotnet project convert app.cs
 ```
 
-- `publish` は既定で Native AOT を有効にする。
-- `pack` は既定で `PackAsTool=true`。
-- 既定挙動を変えたい場合は `#:property PublishAot=false` や `#:property PackAsTool=false` を使う。
+- `publish` enables Native AOT by default.
+- `pack` defaults to `PackAsTool=true`.
+- Use `#:property PublishAot=false` or `#:property PackAsTool=false` when you need to override those defaults.
 
 ---
 
 ## Troubleshooting checklist
 
-### 1. 実行したいのに既存プロジェクトが走る
+### 1. A project runs when you meant to run the file-based app
 
-- `dotnet run --file app.cs` を使う。
-- `app.cs` を `.csproj` 配下から分離したディレクトリへ移すことも検討する。
+- Use `dotnet run --file app.cs`.
+- Consider moving `app.cs` outside the `.csproj` directory tree.
 
-### 2. キャッシュが怪しい
+### 2. Build caching looks wrong
 
 - `dotnet clean app.cs`
 - `dotnet clean file-based-apps`
-- 必要に応じて `dotnet build app.cs` → `dotnet run app.cs --no-build`
+- If needed, run `dotnet build app.cs` and then `dotnet run app.cs --no-build`
 
-### 3. implicit build files の影響が強い
+### 3. Implicit build files are affecting behavior
 
 - `Directory.Build.props`
 - `Directory.Build.targets`
@@ -132,24 +132,24 @@ dotnet project convert app.cs
 - `nuget.config`
 - `global.json`
 
-上記が親ディレクトリにあると file-based app にも効く。予期しない挙動の原因になりやすい。
+Any of these in parent directories can affect the file-based app and often explain surprising behavior.
 
-### 4. 配置が悪い
+### 4. The folder layout is working against you
 
-- `.csproj` の cone の中に utility 用 `app.cs` を置かない。
-- scripts 用ディレクトリを分離する。
+- Avoid placing a utility-style `app.cs` inside a `.csproj` cone.
+- Use a separate directory for standalone scripts and utilities.
 
 ---
 
 ## Output expectations
 
-ユーザーへの回答では、必要に応じて次の順で整理する。
+When responding, prefer this order when it fits the request:
 
-1. **最短の結論**: 何を実行・追加すればよいか
-2. **サンプルコード**: 単一 `.cs` ファイルで動く最小例
-3. **補足**: SDK 要件、プレビュー制約、キャッシュやフォルダ配置の注意
+1. **Shortest correct answer**: what to run, add, or change
+2. **Sample code**: the smallest single `.cs` file that works
+3. **Notes**: SDK requirements, preview limitations, cache behavior, or folder layout caveats
 
-変換や設計判断が絡む場合は、file-based app を選ぶ理由と通常の `.csproj` に戻すべき条件も明示する。
+If the request involves conversion or architectural choice, explain why a file-based app is a good fit and when a normal `.csproj` would be a better option.
 
 ---
 
@@ -165,7 +165,7 @@ using Spectre.Console;
 AnsiConsole.MarkupLine("[green]Hello from a file-based app[/]");
 ```
 
-実行:
+Run:
 
 ```bash
 dotnet run hello.cs
@@ -196,5 +196,5 @@ app.Run();
 
 ## References
 
-- 詳細リファレンス: [references/file-based-apps.md](./references/file-based-apps.md)
-- 公式ドメイン参照先: https://learn.microsoft.com/en-us/dotnet/core/sdk/file-based-apps
+- Detailed reference: [references/file-based-apps.md](./references/file-based-apps.md)
+- Source domain: https://learn.microsoft.com/en-us/dotnet/core/sdk/file-based-apps
