@@ -27,7 +27,7 @@ A .docx file is a ZIP archive containing XML files.
 Legacy `.doc` files must be converted before editing:
 
 ```bash
-python scripts/office/soffice.py --headless --convert-to docx document.doc
+dotnet run --file scripts\office\soffice.cs -- --headless --convert-to docx document.doc
 ```
 
 ### Reading Content
@@ -37,13 +37,13 @@ python scripts/office/soffice.py --headless --convert-to docx document.doc
 pandoc --track-changes=all document.docx -o output.md
 
 # Raw XML access
-python scripts/office/unpack.py document.docx unpacked/
+dotnet run --file scripts\office\unpack.cs -- document.docx unpacked\
 ```
 
 ### Converting to Images
 
 ```bash
-python scripts/office/soffice.py --headless --convert-to pdf document.docx
+dotnet run --file scripts\office\soffice.cs -- --headless --convert-to pdf document.docx
 pdftoppm -jpeg -r 150 document.pdf page
 ```
 
@@ -52,7 +52,7 @@ pdftoppm -jpeg -r 150 document.pdf page
 To produce a clean document with all tracked changes accepted (requires LibreOffice):
 
 ```bash
-python scripts/accept_changes.py input.docx output.docx
+dotnet run --file scripts\accept_changes.cs -- input.docx output.docx
 ```
 
 ---
@@ -78,7 +78,7 @@ Packer.toBuffer(doc).then(buffer => fs.writeFileSync("doc.docx", buffer));
 ### Validation
 After creating the file, validate it. If validation fails, unpack, fix the XML, and repack.
 ```bash
-python scripts/office/validate.py doc.docx
+dotnet run --file scripts\office\validate.cs -- doc.docx
 ```
 
 ### Page Size
@@ -405,9 +405,9 @@ sections: [{
 
 ### Step 1: Unpack
 ```bash
-python scripts/office/unpack.py document.docx unpacked/
+dotnet run --file scripts\office\unpack.cs -- document.docx unpacked\
 ```
-Extracts XML, pretty-prints, merges adjacent runs, and converts smart quotes to XML entities (`&#x201C;` etc.) so they survive editing. Use `--merge-runs false` to skip run merging.
+Extracts XML, pretty-prints, merges adjacent runs, and converts smart quotes to XML entities (`&#x201C;` etc.) so they survive editing. Use `--no-merge-runs` to skip run merging.
 
 ### Step 2: Edit XML
 
@@ -429,19 +429,19 @@ Edit files in `unpacked/word/`. See XML Reference below for patterns.
 | `&#x201C;` | “ (left double) |
 | `&#x201D;` | ” (right double) |
 
-**Adding comments:** Use `comment.py` to handle boilerplate across multiple XML files (text must be pre-escaped XML):
+**Adding comments:** Use `comment.cs` to handle boilerplate across multiple XML files (text must be pre-escaped XML):
 ```bash
-python scripts/comment.py unpacked/ 0 "Comment text with &amp; and &#x2019;"
-python scripts/comment.py unpacked/ 1 "Reply text" --parent 0  # reply to comment 0
-python scripts/comment.py unpacked/ 0 "Text" --author "Custom Author"  # custom author name
+dotnet run --file scripts\comment.cs -- unpacked\ 0 "Comment text with &amp; and &#x2019;"
+dotnet run --file scripts\comment.cs -- unpacked\ 1 "Reply text" --parent 0  # reply to comment 0
+dotnet run --file scripts\comment.cs -- unpacked\ 0 "Text" --author "Custom Author"  # custom author name
 ```
 Then add markers to document.xml (see Comments in XML Reference).
 
 ### Step 3: Pack
 ```bash
-python scripts/office/pack.py unpacked/ output.docx --original document.docx
+dotnet run --file scripts\office\pack.cs -- unpacked\ output.docx --original document.docx
 ```
-Validates with auto-repair, condenses XML, and creates DOCX. Use `--validate false` to skip.
+Validates with auto-repair, condenses XML, and creates DOCX. Use `--no-validate` to skip.
 
 **Auto-repair will fix:**
 - `durableId` >= 0x7FFFFFFF (regenerates valid ID)
@@ -533,7 +533,7 @@ Without the `<w:del/>` in `<w:pPr><w:rPr>`, accepting changes leaves an empty pa
 
 ### Comments
 
-After running `comment.py` (see Step 2), add markers to document.xml. For replies, use `--parent` flag and nest markers inside the parent's.
+After running `comment.cs` (see Step 2), add markers to document.xml. For replies, use `--parent` flag and nest markers inside the parent's.
 
 **CRITICAL: `<w:commentRangeStart>` and `<w:commentRangeEnd>` are siblings of `<w:r>`, never inside `<w:r>`.**
 
@@ -590,5 +590,5 @@ After running `comment.py` (see Step 2), add markers to document.xml. For replie
 
 - **pandoc**: Text extraction
 - **docx**: `npm install -g docx` (new documents)
-- **LibreOffice**: PDF conversion (auto-configured for sandboxed environments via `scripts/office/soffice.py`)
+- **LibreOffice**: PDF conversion (auto-configured for sandboxed environments via `scripts\office\soffice.cs`)
 - **Poppler**: `pdftoppm` for images

@@ -27,10 +27,10 @@ name: pptx
 python -m markitdown presentation.pptx
 
 # Visual overview
-python scripts/thumbnail.py presentation.pptx
+dotnet run --file scripts\thumbnail.cs -- presentation.pptx
 
 # Raw XML
-python scripts/office/unpack.py presentation.pptx unpacked/
+dotnet run --file scripts\office\unpack.cs -- presentation.pptx unpacked\
 ```
 
 ---
@@ -39,7 +39,7 @@ python scripts/office/unpack.py presentation.pptx unpacked/
 
 **Read [editing.md](editing.md) for full details.**
 
-1. Analyze template with `thumbnail.py`
+1. Analyze template with `thumbnail.cs`
 2. Unpack → manipulate slides → edit content → clean → pack
 
 ---
@@ -213,7 +213,7 @@ Report ALL issues found, including minor ones.
 Convert presentations to individual slide images for visual inspection:
 
 ```bash
-python scripts/office/soffice.py --headless --convert-to pdf output.pptx
+dotnet run --file scripts\office\soffice.cs -- --headless --convert-to pdf output.pptx
 pdftoppm -jpeg -r 150 output.pdf slide
 ```
 
@@ -232,5 +232,5 @@ pdftoppm -jpeg -r 150 -f N -l N output.pdf slide-fixed
 - `pip install "markitdown[pptx]"` - text extraction
 - `pip install Pillow` - thumbnail grids
 - `npm install -g pptxgenjs` - creating from scratch
-- LibreOffice (`soffice`) - PDF conversion (auto-configured for sandboxed environments via `scripts/office/soffice.py`)
+- LibreOffice (`soffice`) - PDF conversion (auto-configured for sandboxed environments via `scripts\office\soffice.cs`)
 - Poppler (`pdftoppm`) - PDF to images
