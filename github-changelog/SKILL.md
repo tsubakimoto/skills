@@ -23,7 +23,7 @@ license: Proprietary. LICENSE has complete terms.
 
 | タスク | コマンド |
 |--------|---------|
-| 指定日の投稿を取得 | `python scripts/fetch_changelog.py <YYYY-MM-DD>` |
+| 指定日の投稿を取得 | `dotnet run --file scripts\fetch_changelog.cs -- <YYYY-MM-DD>` |
 
 ---
 
@@ -43,7 +43,7 @@ license: Proprietary. LICENSE has complete terms.
 ## Running the Script
 
 ```bash
-python scripts/fetch_changelog.py <YYYY-MM-DD>
+dotnet run --file scripts\fetch_changelog.cs -- <YYYY-MM-DD>
 ```
 
 スクリプトは `https://github.blog/changelog/feed/` から RSS フィードを取得し、
@@ -51,7 +51,7 @@ python scripts/fetch_changelog.py <YYYY-MM-DD>
 
 **例:**
 ```bash
-python scripts/fetch_changelog.py 2026-03-06
+dotnet run --file scripts\fetch_changelog.cs -- 2026-03-06
 ```
 
 スクリプト出力例（JSON）:
