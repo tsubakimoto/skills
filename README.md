@@ -1,23 +1,39 @@
-# Skill list
+# My agent skills
 
-## My agent skills
-```
-gh skill install tsubakimoto/skills
-```
+## Installation
 
-Claude Code のプラグインマーケットプレイス経由でもインストールできます。
-```
-/plugin marketplace add tsubakimoto/skills
-/plugin install azure-resource-abbreviations@tsubakimoto-skills
-/plugin install backlog-api@tsubakimoto-skills
-/plugin install csharp-file-based-apps@tsubakimoto-skills
-/plugin install devblog-updates@tsubakimoto-skills
-/plugin install github-changelog@tsubakimoto-skills
-/plugin install marp-css@tsubakimoto-skills
-/plugin install marp-deck@tsubakimoto-skills
-```
+### Plugins
 
-| Name | Origin |
+1. Launch Copilot CLI or Claude Code
+2. Add the marketplace:
+   ```
+   /plugin marketplace add tsubakimoto/skills
+   ```
+3. Install a plugin:
+   ```
+   /plugin install <plugin>@tsubakimoto-skills
+   ```
+4. Restart to load the new plugins
+5. View available skills:
+   ```
+   /skills
+   ```
+6. Update plugin (on demand):
+   ```
+   /plugin update <plugin>@tsubakimoto-skills
+   ```
+
+### GitHub CLI
+
+1. Install GitHub CLI from [GitHub CLI](https://cli.github.com/)
+2. Install a skill:
+   ```
+   gh skill install tsubakimoto/skills
+   ```
+
+## Skill list
+
+| Name | Discription |
 | --- | --- |
 | [azure-resource-abbreviations](./azure-resource-abbreviations/) | [Abbreviation recommendations for Azure resources](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations). |
 | [backlog-api](./backlog-api/) | Backlog API v2 based on [sugimomoto/backlogPostmanCollection](https://github.com/sugimomoto/backlogPostmanCollection) |
@@ -28,6 +44,7 @@ Claude Code のプラグインマーケットプレイス経由でもインス�
 | [marp-deck](./marp-deck/) | Marp deck. |
 
 ## Favorite agent skills
+
 | Name | Repository |
 | --- | --- |
 | .NET | https://github.com/dotnet/skills |
@@ -39,16 +56,3 @@ Claude Code のプラグインマーケットプレイス経由でもインス�
 | Microsoft Fabric | https://github.com/microsoft/skills-for-fabric |
 | Microsoft Work IQ | https://github.com/microsoft/work-iq |
 | WinUI | https://github.com/microsoft/win-dev-skills |
-
-### dotnet/skills
-```
-/plugin marketplace add dotnet/skills
-/plugin install dotnet@dotnet-agent-skills
-/plugin install dotnet-data@dotnet-agent-skills
-/plugin install dotnet-diag@dotnet-agent-skills
-/plugin install dotnet-nuget@dotnet-agent-skills
-/plugin install dotnet-ai@dotnet-agent-skills
-/plugin install dotnet-template-engine@dotnet-agent-skills
-/plugin install dotnet-test@dotnet-agent-skills
-/plugin install dotnet-aspnet@dotnet-agent-skills
-```
