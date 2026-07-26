@@ -5,6 +5,18 @@
 gh skill install tsubakimoto/skills
 ```
 
+Claude Code のプラグインマーケットプレイス経由でもインストールできます。
+```
+/plugin marketplace add tsubakimoto/skills
+/plugin install azure-resource-abbreviations@tsubakimoto-skills
+/plugin install backlog-api@tsubakimoto-skills
+/plugin install csharp-file-based-apps@tsubakimoto-skills
+/plugin install devblog-updates@tsubakimoto-skills
+/plugin install github-changelog@tsubakimoto-skills
+/plugin install marp-css@tsubakimoto-skills
+/plugin install marp-deck@tsubakimoto-skills
+```
+
 | Name | Origin |
 | --- | --- |
 | [azure-resource-abbreviations](./azure-resource-abbreviations/) | [Abbreviation recommendations for Azure resources](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations). |
