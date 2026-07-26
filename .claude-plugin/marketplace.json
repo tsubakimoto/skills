@@ -1,0 +1,44 @@
+{
+  "name": "tsubakimoto-skills",
+  "owner": {
+    "name": "tsubakimoto",
+    "url": "https://github.com/tsubakimoto"
+  },
+  "plugins": [
+    {
+      "name": "azure-resource-abbreviations",
+      "source": "./azure-resource-abbreviations",
+      "description": "Abbreviation recommendations for Azure resources based on the Cloud Adoption Framework."
+    },
+    {
+      "name": "backlog-api",
+      "source": "./backlog-api",
+      "description": "Backlog API v2 based on sugimomoto/backlogPostmanCollection."
+    },
+    {
+      "name": "csharp-file-based-apps",
+      "source": "./csharp-file-based-apps",
+      "description": "C# file-based apps guidance based on .NET file-based apps."
+    },
+    {
+      "name": "devblog-updates",
+      "source": "./devblog-updates",
+      "description": "Summarize the Microsoft Developer Blogs."
+    },
+    {
+      "name": "github-changelog",
+      "source": "./github-changelog",
+      "description": "Summarize the GitHub Changelog."
+    },
+    {
+      "name": "marp-css",
+      "source": "./marp-css",
+      "description": "Marp design."
+    },
+    {
+      "name": "marp-deck",
+      "source": "./marp-deck",
+      "description": "Marp deck."
+    }
+  ]
+}
