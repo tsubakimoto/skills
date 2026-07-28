@@ -19,14 +19,29 @@ set -euo pipefail
 # ─────────────────────────────────────────
 # Input
 # ─────────────────────────────────────────
+APP_NAME=""
+REPO=""
+ENV_NAME=""
+RG_NAME=""
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --app-name)       APP_NAME="$2";  shift 2;;
+        --repo)           REPO="$2";      shift 2;;
+        --environment)    ENV_NAME="$2";  shift 2;;
+        --resource-group) RG_NAME="$2";   shift 2;;
+        *) echo "Unknown argument: $1" >&2; exit 1;;
+    esac
+done
+
+if [[ -z "$APP_NAME" || -z "$REPO" || -z "$ENV_NAME" ]]; then
+    echo "Usage: $0 --app-name <name> --repo <owner/repo> --environment <env> [--resource-group <rg>]" >&2
+    exit 1
+fi
+
 echo ""
 echo "=== Entra Federated Credentials Setup ==="
 echo ""
-
-read -rp "Entra app name: "                                    APP_NAME
-read -rp "Repository (e.g. org/repo): "                        REPO
-read -rp "GitHub Environment name: "                           ENV_NAME
-read -rp "Resource group name for role assignment (Enter to skip): " RG_NAME
 
 # ─────────────────────────────────────────
 # Prerequisites

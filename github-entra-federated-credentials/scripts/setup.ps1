@@ -16,8 +16,20 @@
     - GitHub CLI (gh) installed and logged in
 #>
 
+param(
+    [Parameter(Mandatory)][string]$AppName,
+    [Parameter(Mandatory)][string]$Repo,
+    [Parameter(Mandatory)][string]$Environment,
+    [string]$ResourceGroup = ""
+)
+
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+
+$appName = $AppName
+$repo    = $Repo
+$env     = $Environment
+$rgName  = $ResourceGroup
 
 # ─────────────────────────────────────────
 # Input
@@ -25,11 +37,6 @@ $ErrorActionPreference = "Stop"
 Write-Host ""
 Write-Host "=== Entra Federated Credentials Setup ===" -ForegroundColor Cyan
 Write-Host ""
-
-$appName = Read-Host "Entra app name"
-$repo    = Read-Host "Repository (e.g. org/repo)"
-$env     = Read-Host "GitHub Environment name"
-$rgName  = Read-Host "Resource group name for role assignment (press Enter to skip)"
 
 # ─────────────────────────────────────────
 # Prerequisites

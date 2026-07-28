@@ -42,18 +42,26 @@ Ask the user for any missing values before running the script:
 
 ## Running the setup script
 
-Choose the script that matches your environment. Both scripts prompt interactively for inputs.
+Collect all required inputs from the user first, then run the script for their environment.
 
 **Windows (PowerShell):**
 
 ```powershell
-pwsh "<skill_dir>/scripts/setup.ps1"
+pwsh "<skill_dir>/scripts/setup.ps1" `
+  -AppName "<app name>" `
+  -Repo "<owner/repo>" `
+  -Environment "<env name>" `
+  [-ResourceGroup "<rg name>"]
 ```
 
 **macOS / Linux (Bash):**
 
 ```bash
-bash "<skill_dir>/scripts/setup.sh"
+bash "<skill_dir>/scripts/setup.sh" \
+  --app-name "<app name>" \
+  --repo "<owner/repo>" \
+  --environment "<env name>" \
+  [--resource-group "<rg name>"]
 ```
 
 `<skill_dir>` is the directory containing this SKILL.md file.
