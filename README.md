@@ -40,6 +40,7 @@
 | [csharp-file-based-apps](./csharp-file-based-apps/) | C# file-based apps guidance based on [.NET file-based apps](https://learn.microsoft.com/en-us/dotnet/core/sdk/file-based-apps). |
 | [devblog-updates](./devblog-updates/) | Summarize the [Microsoft Developer Blogs](https://devblogs.microsoft.com/landing). |
 | [github-changelog](./github-changelog/) | Summarize the [GitHub Changelog](https://github.blog/changelog/). |
+| [github-entra-federated-credentials](./github-entra-federated-credentials/) | Sets up Entra ID federated credentials so GitHub Actions can authenticate to Azure using OIDC (workload identity federation) — no client secrets required. |
 | [marp-css](./marp-css/) | Marp design. |
 | [marp-deck](./marp-deck/) | Marp deck. |
 
