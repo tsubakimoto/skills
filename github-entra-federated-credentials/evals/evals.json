@@ -1,0 +1,73 @@
+{
+  "skill_name": "entra-federated-credentials",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "GitHub ActionsからAzureにデプロイしたい。secretsにクレデンシャルを置きたくないので、OIDCで接続できるようにセットアップして。リポジトリはtsubakimoto/my-app、EnvironmentはProduction。",
+      "expected_output": "Entraアプリ名を確認し、setup.csスクリプトを実行するコマンドを提示する。必要な引数（--app-name, --repo, --environment）を正しく渡す。",
+      "files": [],
+      "assertions": [
+        {
+          "name": "mentions-setup-script",
+          "description": "setup.cs スクリプトへの参照または dotnet run コマンドが含まれる"
+        },
+        {
+          "name": "correct-repo-arg",
+          "description": "--repo tsubakimoto/my-app が正しく含まれる"
+        },
+        {
+          "name": "correct-env-arg",
+          "description": "--environment Production が正しく含まれる"
+        },
+        {
+          "name": "asks-for-app-name",
+          "description": "Entraアプリ名が不明のため、ユーザーに確認を求める"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I'm getting this error when running my GitHub Actions workflow: AADSTS700213: No matching federated identity record found for presented assertion subject 'repo:myorg@12345/myrepo@67890:environment:Staging'. How do I fix this?",
+      "expected_output": "OIDC subjectのフォーマット（owner_idとrepo_idを含む形式）の問題であることを説明し、setup.csスクリプトで再設定するよう案内する。",
+      "files": [],
+      "assertions": [
+        {
+          "name": "explains-oidc-subject-format",
+          "description": "OIDC subjectに数値ID（owner_id, repo_id）が必要であることを説明する"
+        },
+        {
+          "name": "identifies-root-cause",
+          "description": "エラーの根本原因（federated credentialのsubject不一致）を正確に説明する"
+        },
+        {
+          "name": "provides-fix",
+          "description": "修正手順またはsetup.csスクリプトで再設定するよう案内する"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "azure/login@v2 を使いたい。必要な設定を全部やって。リポジトリはacmecorp/api-service、本番環境名はproduction、Azureのリソースグループはrg-api-prod。",
+      "expected_output": "不足しているEntraアプリ名を尋ね、setup.csスクリプトのコマンドを--resource-groupオプション付きで提示する。",
+      "files": [],
+      "assertions": [
+        {
+          "name": "asks-for-app-name",
+          "description": "Entraアプリ名が未指定のため、ユーザーに確認を求める"
+        },
+        {
+          "name": "includes-resource-group-arg",
+          "description": "--resource-group rg-api-prod を含むコマンドを提示する"
+        },
+        {
+          "name": "correct-repo-arg",
+          "description": "--repo acmecorp/api-service が正しく含まれる"
+        },
+        {
+          "name": "correct-env-arg",
+          "description": "--environment production が正しく含まれる"
+        }
+      ]
+    }
+  ]
+}
