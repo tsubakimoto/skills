@@ -1,0 +1,23 @@
+{
+  "skill_name": "dependabot-auto-merge",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Configure Dependabot auto-merge for tsubakimoto/turbo-train with CI checks: build, test",
+      "expected_output": "Repository auto-merge enabled, squash merge enabled, branch ruleset created with deletion protection, force-push protection, and required CI checks (build, test)",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Set up Dependabot auto-merge for my-org/my-repo without specifying CI checks",
+      "expected_output": "Repository auto-merge enabled, squash merge enabled, branch ruleset created with deletion protection and force-push protection only (no CI checks)",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I want to enable auto-merge for Dependabot PRs on tsubakimoto/skills with CI checks: lint, test, build",
+      "expected_output": "Repository auto-merge enabled, squash merge enabled, branch ruleset created with deletion protection, force-push protection, and required CI checks (lint, test, build)",
+      "files": []
+    }
+  ]
+}

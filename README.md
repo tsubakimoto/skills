@@ -38,6 +38,7 @@
 | [azure-resource-abbreviations](./azure-resource-abbreviations/) | [Abbreviation recommendations for Azure resources](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations). |
 | [backlog-api](./backlog-api/) | Backlog API v2 based on [sugimomoto/backlogPostmanCollection](https://github.com/sugimomoto/backlogPostmanCollection) |
 | [csharp-file-based-apps](./csharp-file-based-apps/) | C# file-based apps guidance based on [.NET file-based apps](https://learn.microsoft.com/en-us/dotnet/core/sdk/file-based-apps). |
+| [dependabot-auto-merge](./dependabot-auto-merge/) | Configure Dependabot auto-merge for a GitHub repository. |
 | [devblog-updates](./devblog-updates/) | Summarize the [Microsoft Developer Blogs](https://devblogs.microsoft.com/landing). |
 | [github-changelog](./github-changelog/) | Summarize the [GitHub Changelog](https://github.blog/changelog/). |
 | [github-entra-federated-credentials](./github-entra-federated-credentials/) | Sets up Entra ID federated credentials so GitHub Actions can authenticate to Azure using OIDC (workload identity federation) — no client secrets required. |
