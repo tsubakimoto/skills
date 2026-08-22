@@ -6,6 +6,11 @@
   },
   "plugins": [
     {
+      "name": "azure-paas-support",
+      "source": "./azure-paas-support",
+      "description": "Troubleshoot Azure PaaS issues using the Japan PaaS Support Team Blog."
+    },
+    {
       "name": "azure-resource-abbreviations",
       "source": "./azure-resource-abbreviations",
       "description": "Abbreviation recommendations for Azure resources based on the Cloud Adoption Framework."

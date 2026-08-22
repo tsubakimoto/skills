@@ -1,0 +1,77 @@
+{
+  "skill_name": "azure-paas-support",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Windows の Azure App Service で Node.js 24 に上げたところ、アプリが起動しなくなりました。Node.js 22 では動いていました。何を確認すべきですか？Japan PaaS Support Team Blog を根拠に回答してください。",
+      "expected_output": "サイト限定検索で Node.js 24 の記事本文を確認し、Windows App Service では 64 bit process の有効化が必要であること、確認・変更手順、適用条件、記事URLを示す。",
+      "files": [],
+      "assertions": [
+        {
+          "name": "identifies-64-bit-requirement",
+          "description": "Windows App Service で Node.js 24 を使う場合に 64 bit process の有効化が必要だと説明する"
+        },
+        {
+          "name": "provides-concrete-check",
+          "description": "プラットフォーム設定など、64 bit 設定を確認・変更する具体的な手順を示す"
+        },
+        {
+          "name": "cites-matching-jpazpaas-article",
+          "description": "Node.js 24 の該当記事タイトルと azure.github.io/jpazpaas の完全なURLを示す"
+        },
+        {
+          "name": "states-applicability",
+          "description": "Windows App Service と Node.js 24 が対象であることを適用条件として明示する"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "プライベート エンドポイント構成の Azure AI Search を Azure Portal から開くと、インデックス画面で \"Failed to fetch\" になります。原因と対処方法を調べてください。",
+      "expected_output": "サイト限定検索で該当記事本文を読み、ブラウザーのローカル ネットワーク アクセス制限が通信をブロックする可能性と、portal.azure.com にアクセスを許可する手順、適用条件、記事URLを示す。",
+      "files": [],
+      "assertions": [
+        {
+          "name": "identifies-browser-local-network-access",
+          "description": "Failed to fetch の原因としてブラウザーのローカル ネットワーク アクセス制限を説明する"
+        },
+        {
+          "name": "provides-browser-permission-steps",
+          "description": "portal.azure.com に対するローカル ネットワーク アクセスを Edge または Chrome で許可する具体的な手順を示す"
+        },
+        {
+          "name": "cites-matching-jpazpaas-article",
+          "description": "AI Search と Failed to fetch の該当記事タイトルと完全なURLを示す"
+        },
+        {
+          "name": "states-article-applicability",
+          "description": "Private Endpoint のみの構成で、ネットワークや DNS には問題がなく、ユーザーごとに再現差があり得るという記事の適用条件に触れる"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Azure App Service Linux で PHP 9.0 に更新したら独自拡張が読み込まれません。Japan PaaS Support Team Blog に対処記事があるか調べ、根拠に基づいて回答してください。",
+      "expected_output": "複数のサイト限定検索を試したうえで、直接根拠となる記事を確認できない場合はその旨を明示し、ブログ外の知識で断定せず Microsoft Learn での追加調査を提案する。",
+      "files": [],
+      "assertions": [
+        {
+          "name": "reports-no-matching-evidence",
+          "description": "直接根拠となる Japan PaaS Support Team Blog 記事を確認できない場合、その事実を明示する"
+        },
+        {
+          "name": "does-not-invent-blog-guidance",
+          "description": "存在しないブログ記事やブログ由来ではない対処を、ブログの根拠として断定しない"
+        },
+        {
+          "name": "suggests-microsoft-learn",
+          "description": "Microsoft Learn の現行ドキュメントで追加調査することを提案する"
+        },
+        {
+          "name": "mentions-search-focus",
+          "description": "サイト内で確認した主要な検索観点を簡潔に示す"
+        }
+      ]
+    }
+  ]
+}
