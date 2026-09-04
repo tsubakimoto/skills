@@ -21,6 +21,11 @@
       "description": "C# file-based apps guidance based on .NET file-based apps."
     },
     {
+      "name": "dependabot-auto-merge",
+      "source": "./dependabot-auto-merge",
+      "description": "Automatically merge Dependabot pull requests."
+    },
+    {
       "name": "devblog-updates",
       "source": "./devblog-updates",
       "description": "Summarize the Microsoft Developer Blogs."
@@ -29,6 +34,11 @@
       "name": "github-changelog",
       "source": "./github-changelog",
       "description": "Summarize the GitHub Changelog."
+    },
+    {
+      "name": "github-entra-federated-credentials",
+      "source": "./github-entra-federated-credentials",
+      "description": "Setup GitHub Entra Federated Credentials."
     },
     {
       "name": "marp-css",
