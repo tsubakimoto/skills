@@ -5,13 +5,16 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Xml;
 
-if (args.Length < 1)
+if (args.Length < 4)
 {
-    Console.Error.WriteLine("Usage: dotnet hatena-client.cs -- <file-path>");
+    Console.Error.WriteLine("Usage: dotnet hatena-client.cs -- <username> <api-key> <blog-id> <file-path>");
     return 1;
 }
 
-var filePath = args[0];
+var username = args[0];
+var apiKey   = args[1];
+var blogId   = args[2];
+var filePath = args[3];
 if (!File.Exists(filePath))
 {
     Console.Error.WriteLine($"File not found: {filePath}");
@@ -20,10 +23,6 @@ if (!File.Exists(filePath))
 
 var fileContent = await File.ReadAllTextAsync(filePath);
 var firstLine   = fileContent.Split('\n', 2)[0].TrimStart('#').Trim();
-
-var username = Environment.GetEnvironmentVariable("HATENA_USERNAME") ?? "your-username";
-var apiKey   = Environment.GetEnvironmentVariable("HATENA_API_KEY")  ?? "your-api-key";
-var blogId   = Environment.GetEnvironmentVariable("HATENA_BLOG_ID")  ?? "your-blog.hatenablog.com";
 
 var client = new HatenaClient(username, apiKey, blogId);
 

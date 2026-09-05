@@ -22,29 +22,27 @@ license: Proprietary. LICENSE has complete terms.
 - はてなブログAtomPub APIで利用するユーザー名とAPIキー
 - 投稿対象ファイルへの読み取りアクセス
 
-認証情報はソースコードやコマンドライン引数に埋め込まず、次の環境変数で渡す。
+認証情報はソースコードに埋め込まず、スクリプトの入力パラメーターとして渡す。
 
-| 環境変数 | 内容 | 例 |
+| パラメーター | 内容 | 例 |
 | --- | --- | --- |
-| `HATENA_USERNAME` | はてなユーザー名 | `example` |
-| `HATENA_API_KEY` | はてなブログAPIキー | `...` |
-| `HATENA_BLOG_ID` | ブログID（通常はドメイン） | `example.hatenablog.com` |
+| `username` | はてなユーザー名 | `example` |
+| `api-key` | はてなブログAPIキー | `...` |
+| `blog-id` | ブログID（通常はドメイン） | `example.hatenablog.com` |
+| `file-path` | 投稿対象ファイルのパス | `articles\2026-09-05.md` |
 
 ## 実行方法
 
 スキルディレクトリを基準に、次のコマンドで実行する。
 
 ```powershell
-dotnet run --file scripts\hatena-client.cs -- <file-path>
+dotnet run --file scripts\hatena-client.cs -- <username> <api-key> <blog-id> <file-path>
 ```
 
 例:
 
 ```powershell
-$env:HATENA_USERNAME = "example"
-$env:HATENA_API_KEY = "your-api-key"
-$env:HATENA_BLOG_ID = "example.hatenablog.com"
-dotnet run --file scripts\hatena-client.cs -- articles\2026-09-05.md
+dotnet run --file scripts\hatena-client.cs -- example your-api-key example.hatenablog.com articles\2026-09-05.md
 ```
 
 ## 入力ファイルの扱い
@@ -72,7 +70,7 @@ dotnet run --file scripts\hatena-client.cs -- articles\2026-09-05.md
 
 1. `https://blog.hatena.ne.jp/{username}/{blogId}/atom/entry` にAtomPub APIで
    `POST` する。
-2. Basic認証に `HATENA_USERNAME` と `HATENA_API_KEY` を使用する。
+2. Basic認証に `username` と `api-key` を使用する。
 3. Atomエントリの本文タイプは `text/markdown` にする。
 4. `app:draft=yes` を付けるため、投稿結果は下書きになる。
 5. カテゴリは現在指定しない。
@@ -84,7 +82,8 @@ APIキー自体はXML本文に含まれないが、記事本文が表示され�
 ## ワークフロー
 
 1. 投稿するファイルのパスと、先頭行が意図したタイトルになっていることを確認する。
-2. `HATENA_*` 環境変数を設定する。未設定時の既定値はダミー値なので、そのまま実行しない。
+2. `username`、`api-key`、`blog-id` を準備する。APIキーはシェル履歴やCIログに
+   残る可能性があるため、必要に応じて安全な実行環境から渡す。
 3. 上記のコマンドでスクリプトを実行する。
 4. HTTPステータスとレスポンス本文を確認し、はてなブログ管理画面で下書きを確認する。
 5. 内容・タイトル・公開設定を確認してから、管理画面で公開する。
