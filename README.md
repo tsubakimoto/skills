@@ -46,6 +46,7 @@
 | [hatena-blog-publisher](./hatena-blog-publisher/) | Create Hatena Blog draft entries from local file contents. |
 | [marp-css](./marp-css/) | Marp design. |
 | [marp-deck](./marp-deck/) | Marp deck. |
+| [summarized-post](./summarized-post/) | Retrieve the content from the specified URL and create a series of posts to share the article on X (Twitter). |
 
 ## Favorite agent skills
 
