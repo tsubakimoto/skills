@@ -46,6 +46,11 @@
       "description": "Setup GitHub Entra Federated Credentials."
     },
     {
+      "name": "hatena-blog-publisher",
+      "source": "./hatena-blog-publisher",
+      "description": "Publish local files as Hatena Blog entries using the AtomPub API."
+    },
+    {
       "name": "marp-css",
       "source": "./marp-css",
       "description": "Marp design."
