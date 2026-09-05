@@ -59,6 +59,11 @@
       "name": "marp-deck",
       "source": "./marp-deck",
       "description": "Marp deck."
+    },
+    {
+      "name": "summarized-post",
+      "source": "./summarized-post",
+      "description": "Retrieve the content from the specified URL and create a series of posts to share the article on X (Twitter)."
     }
   ]
 }
