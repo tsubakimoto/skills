@@ -1,0 +1,38 @@
+{
+  "skill_name": "git-worktree",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "main を触らずに issue 314 用の作業を始めたいです。リポジトリは C:\\src\\inventory、既定ブランチは origin/main です。作業ディレクトリとブランチを安全に作るコマンドを教えてください。",
+      "expected_output": "An explicit new branch and sibling worktree command, concise caveats, and verification commands.",
+      "files": [],
+      "expectations": [
+        "Creates a named branch with git worktree add -b and uses origin/main as the supplied start point.",
+        "Uses a distinct sibling worktree path rather than changing the current main checkout.",
+        "Includes verification using git worktree list and worktree-local branch or status commands."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "不要になった ../inventory-fix-login worktree を消したいです。変更が残っているか不明なので、失わずに片付ける手順を出してください。",
+      "expected_output": "A status inspection before removal, non-destructive alternatives for dirty state, ordinary removal only when clean, and verification.",
+      "files": [],
+      "expectations": [
+        "Inspects the target worktree with git -C ../inventory-fix-login status --short before removal.",
+        "Does not recommend git worktree remove --force before the user explicitly accepts data loss.",
+        "Uses ordinary git worktree remove only for a clean worktree and supplies verification."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "古い worktree のフォルダを Explorer で削除しました。git worktree list に prunable と出ます。安全に登録を整理するにはどうしますか？",
+      "expected_output": "A dry-run prune preview followed by a reviewed prune, with verification and no unnecessary force.",
+      "files": [],
+      "expectations": [
+        "Uses git worktree prune --dry-run --verbose before performing cleanup.",
+        "Provides git worktree prune --verbose only after preview/review and does not use force.",
+        "Includes git worktree list --verbose verification and distinguishes prune from repair."
+      ]
+    }
+  ]
+}

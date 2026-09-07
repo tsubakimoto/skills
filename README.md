@@ -43,6 +43,7 @@
 | [devblog-updates](./devblog-updates/) | Summarize the [Microsoft Developer Blogs](https://devblogs.microsoft.com/landing). |
 | [github-changelog](./github-changelog/) | Summarize the [GitHub Changelog](https://github.blog/changelog/). |
 | [github-entra-federated-credentials](./github-entra-federated-credentials/) | Sets up Entra ID federated credentials so GitHub Actions can authenticate to Azure using OIDC (workload identity federation) — no client secrets required. |
+| [git-worktree](./git-worktree/) | Safely manage Git worktrees: create, list, move, lock, remove, repair, and prune parallel checkouts. |
 | [hatena-blog-publisher](./hatena-blog-publisher/) | Create Hatena Blog draft entries from local file contents. |
 | [marp-css](./marp-css/) | Marp design. |
 | [marp-deck](./marp-deck/) | Marp deck. |
