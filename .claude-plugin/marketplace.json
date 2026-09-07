@@ -36,6 +36,11 @@
       "description": "Summarize the Microsoft Developer Blogs."
     },
     {
+      "name": "git-worktree",
+      "source": "./git-worktree",
+      "description": "Manage Git worktrees."
+    },
+    {
       "name": "github-changelog",
       "source": "./github-changelog",
       "description": "Summarize the GitHub Changelog."
