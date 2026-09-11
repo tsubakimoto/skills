@@ -17,5 +17,6 @@ description: Retrieve the content from the specified URL and create a series of 
     - `{current}`: 現在のポスト番号
     - `{total}`: ポスト総数
     - `{post title}`: この要点のタイトル
-    - `{post content}`: この要点の内容
-6. ポストを作成したら出力する。
+    - `{post body}`: この要点の内容
+6. 各ポストは、テンプレートの固定文・見出し・本文を含めて、全角・半角の混在を考慮した文字幅で120〜140文字程度（目安130文字）に収める。130文字を大きく超えないよう、本文を作成後に文字数を確認して調整する。
+7. ポストを作成したら出力する。
