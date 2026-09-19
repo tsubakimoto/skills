@@ -1,4 +1,3 @@
 {post title}
 {post url}
-
 この記事の要点👇️

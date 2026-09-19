@@ -1,3 +1,2 @@
 {current}/{total}: {post title}
-
 {post body}
