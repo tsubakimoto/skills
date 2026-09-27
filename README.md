@@ -59,6 +59,7 @@
 | Azure | https://github.com/microsoft/azure-skills |
 | freee | https://github.com/freee/freee-mcp/tree/main/skills%2Ffreee-api-skill |
 | Microsoft | https://github.com/microsoft/skills |
+| Microsoft Docs | https://github.com/MicrosoftDocs/Agent-Skills |
 | Microsoft Fabric | https://github.com/microsoft/skills-for-fabric |
 | Microsoft Work IQ | https://github.com/microsoft/work-iq |
 | WinUI | https://github.com/microsoft/win-dev-skills |
