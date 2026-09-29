@@ -54,10 +54,11 @@
 | Name | Repository |
 | --- | --- |
 | .NET | https://github.com/dotnet/skills |
-| Anthropics | https://github.com/anthropics/skills |
+| Anthropic | https://github.com/anthropics/skills |
 | Awesome GitHub Copilot | https://github.com/github/awesome-copilot |
 | Azure | https://github.com/microsoft/azure-skills |
 | freee | https://github.com/freee/freee-mcp/tree/main/skills%2Ffreee-api-skill |
+| mattpocock | https://github.com/mattpocock/skills |
 | Microsoft | https://github.com/microsoft/skills |
 | Microsoft Docs | https://github.com/MicrosoftDocs/Agent-Skills |
 | Microsoft Fabric | https://github.com/microsoft/skills-for-fabric |
