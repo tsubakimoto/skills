@@ -62,5 +62,6 @@
 | Microsoft | https://github.com/microsoft/skills |
 | Microsoft Docs | https://github.com/MicrosoftDocs/Agent-Skills |
 | Microsoft Fabric | https://github.com/microsoft/skills-for-fabric |
+| Microsoft SQL | https://github.com/microsoft/microsoft-sql |
 | Microsoft Work IQ | https://github.com/microsoft/work-iq |
 | WinUI | https://github.com/microsoft/win-dev-skills |
